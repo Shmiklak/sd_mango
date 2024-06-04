@@ -1,0 +1,14 @@
+.team-page-member {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    text-align: center;
+    font-weight: bold;
+
+    .team-page-profile-pic {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+}

@@ -1,0 +1,27 @@
+.queue-form {
+    max-width: 600px;
+    margin: 30px auto;
+    background: #FFF;
+    border: 1px solid #CCC;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-control {
+    width: 100%;
+    display: block;
+    border: 1px solid #CCC;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+textarea.form-control {
+    height: 100px;
+    resize: vertical;
+}

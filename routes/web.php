@@ -4,6 +4,7 @@ use App\Http\Controllers\oAuth\OsuAuthController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,14 +17,11 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => false,
-        'canRegister' => false,
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/team', [HomeController::class, 'team'])->name('team');
+Route::get('/queue', [HomeController::class, 'queue'])->name('queue');
+Route::get('/send-request', [HomeController::class, 'send_request'])->name('send_request');
+Route::post('/send-request', [HomeController::class, 'send_request_post'])->name('send_request.post');
 
 Route::get('osu_auth', [OsuAuthController::class, 'redirectToProvider'])->name('osu_login');
 Route::get('osu_login', [OsuAuthController::class, 'handleProviderCallback']);

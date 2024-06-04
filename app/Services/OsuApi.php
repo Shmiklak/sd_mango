@@ -13,6 +13,23 @@ class OsuApi {
         $this->client = new GClient();
     }
 
+    private function get($url, $data = []) {
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer ' . Session::get('osu_access_token'),
+            'Accept-Language' => 'en'
+        ];
+
+        $res = $this->client->request('GET', $this->baseUrl. $url, [
+            'headers' => $headers
+        ]);
+
+        $response = json_decode($res->getBody()->getContents(), true);
+
+        return $response;
+    }
+
     private function delete($url, $data = []) {
         $headers = [
             'Content-Type' => 'application/json',
@@ -32,5 +49,9 @@ class OsuApi {
 
     public function revokeToken() {
         $this->delete('oauth/tokens/current');
+    }
+
+    public function getBeatmapset($beatmapset_id) {
+        return $this->get('beatmapsets/'.$beatmapset_id);
     }
 }

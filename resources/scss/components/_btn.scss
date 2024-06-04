@@ -1,0 +1,26 @@
+.btn {
+    font-weight: bold;
+    border-radius: 8px;
+    text-align: center;
+    display: inline-block;
+    padding: 15px 40px;
+    line-height: 1;
+    border: 0;
+    cursor: pointer;
+
+    &-primary {
+        background: $accent_color;
+        color: #FFF;
+        transition: 300ms;
+        &:hover {
+            background: darken($accent_color, 5%);
+            color: #FFF;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .btn {
+        font-size: 16px;
+    }
+}

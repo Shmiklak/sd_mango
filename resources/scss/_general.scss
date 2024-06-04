@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: $bg_color;
+    color: $text_color;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 16px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: 300ms;
+    &:hover {
+        color: $accent_color;
+    }
+}
+
+.accent-text {
+    color: $accent_color;
+}
+
+.router-animation {
+    transition: 300ms;
+    opacity: 1;
+    visibility: visible;
+}
+
+.router-animation.on {
+    opacity: 0;
+    visibility: hidden;
+}
+
+main {
+    min-height: 80vh;
+}
+
+@media (max-width: 991px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+p {
+    line-height: 1.5;
+    a {
+        color: $accent_color;
+        text-decoration: underline;
+    }
+}
+
+.home-page-section {
+    margin-bottom: 50px;
+}
+
+.section-title {
+    color: $accent_color;
+    font-size: 3rem;
+    font-weight: bold;
+}

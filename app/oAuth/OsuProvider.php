@@ -17,6 +17,13 @@ class OsuProvider extends AbstractProvider implements ProviderInterface {
     const IDENTIFY = 'identify'; // Allows reading of the public profile of the user (/me).
     const PUBLIC_DATA = 'public'; // Allows reading of publicly available data on behalf of the user.
 
+    protected $scopes = [
+        self::PUBLIC_DATA,
+        self::IDENTIFY
+    ];
+
+    protected $scopeSeparator = ' ';
+
     protected function getAuthUrl($state)
     {
         return $this->buildAuthUrlFromBase('https://osu.ppy.sh/oauth/authorize', $state);
