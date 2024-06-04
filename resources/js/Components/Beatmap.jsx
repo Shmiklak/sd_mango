@@ -1,13 +1,11 @@
-import {useState} from "react";
-
 export const Beatmap = ( props ) => {
 
     return (
-        <div className="col-lg-4 col-md-6 col-12">
+        <div className="col-lg-4 col-md-6 col-12 mb-3">
             <div className="beatmap">
                 <div className="beatmap-cover">
                     <a href={`https://osu.ppy.sh/beatmapsets/${props.beatmap.beatmapset_id}`} target="_blank">
-                        <img src={props.beatmap.cover} className="beatmap-image"/>
+                        <img src={props.beatmap.cover} alt={`${props.beatmap.artist} - ${ props.beatmap.title }`} className="beatmap-image"/>
                     </a>
                 </div>
                 <div className="beatmap-text">
@@ -38,6 +36,9 @@ export const Beatmap = ( props ) => {
                             {props.beatmap.bpm}
                         </div>
                     </div>
+                    <p className="mt-3">
+                        <strong>Mapper comment: </strong> {props.beatmap.comment}
+                    </p>
                 </div>
             </div>
         </div>

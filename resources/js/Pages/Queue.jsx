@@ -18,7 +18,7 @@ const Queue = ({ auth, beatmaps }) => {
                     ))}
                 </div>
 
-                <nav className="mt-5">
+                <nav className="mt-5 mb-5">
                     <ul className="pagination justify-content-center">
                         {beatmaps.links.map((link) => (
                             <li className={link.url === null ? "page-item disabled" : (link.active ? "page-item active" : "page-item")}>
