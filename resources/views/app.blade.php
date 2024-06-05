@@ -29,6 +29,17 @@
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
         <meta name="theme-color" content="#EA564B">
 
+        <meta name="description" content="#sd_mango is a team of Beatmap Nominators united to promote the beatmaps YOU like. sd_mango's goal is to reconnect the playerbase with the ranked section once again by promoting a variety of simple jump or stream maps, including highly difficult mechanics focused maps designed for top players to push their limits."/>
+        <meta name="keywords" content="osu, sd_mango, beatmap nominators, bn, modding, mapping, osu queue, osumod, osu beatmaps, osu!, dean peppy herbert, sotarks, log off now"/>
+        <meta property="og:title" content="#sd_mango" />
+        <meta property="og:site_name" content="#sd_mango" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ request()->url() }}" />
+        <meta property="og:image" content="{{ asset('static/assets/images/banner.png') }}" />
+        <meta property="og:image:alt" content="{{ asset('static/assets/images/banner.png') }}" />
+        <meta property="og:description" content="#sd_mango is a team of Beatmap Nominators united to promote the beatmaps YOU like. sd_mango's goal is to reconnect the playerbase with the ranked section once again by promoting a variety of simple jump or stream maps, including highly difficult mechanics focused maps designed for top players to push their limits." />
+        <meta http-equiv="content-language" content="EN">
+
         <!-- Scripts -->
         @routes
         @viteReactRefresh
