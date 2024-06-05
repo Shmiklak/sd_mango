@@ -27,6 +27,7 @@ const PageHeader = props => {
                             <MenuLink link="home" text="Home"/>
                             <MenuLink link="send_request" text="Request"/>
                             <MenuLink link="queue" text="Queue"/>
+                            <MenuLink link="my_requests" text="My requests"/>
                             <MenuLink link="team" text="Team"/>
                         </ul>
                         <div className="page-header-nav__profile">

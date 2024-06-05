@@ -6,6 +6,7 @@ import {Beatmap} from "@/Components/Beatmap.jsx";
 const Queue = ({ auth, beatmaps }) => {
 
     let params = new URLSearchParams(window.location.search);
+    let query_url = window.location.pathname;
 
     const { data, setData, get, processing, errors, reset } = useForm({
         map_style: params.get('map_style') === null ? 'all' : params.get('map_style'),
@@ -14,7 +15,7 @@ const Queue = ({ auth, beatmaps }) => {
 
     const submit = (e) => {
         e.preventDefault();
-        get('/queue', {
+        get(query_url, {
             preserveState: true
         });
     }
@@ -24,7 +25,7 @@ const Queue = ({ auth, beatmaps }) => {
             <Head title="Queue"/>
             { auth.user === null ? (<LoginRequired/>) : (<>
                 <div className="text-center">
-                    <h1 className="section-title text-center">Queue</h1>
+                    <h1 className="section-title text-center">{query_url === '/queue' ? 'Queue' : 'My requests'}</h1>
                 </div>
 
                 <div className="queue-filter">

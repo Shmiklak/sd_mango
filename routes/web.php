@@ -21,6 +21,7 @@ use App\Http\Controllers\AdminController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::get('/queue', [HomeController::class, 'queue'])->name('queue');
+Route::get('/my_requests', [HomeController::class, 'my_requests'])->name('my_requests');
 Route::get('/send-request', [HomeController::class, 'send_request'])->name('send_request');
 Route::post('/send-request', [HomeController::class, 'send_request_post'])->name('send_request.post');
 Route::get('/queue/request/{id}', [HomeController::class, 'queue_request'])->name('queue_request');

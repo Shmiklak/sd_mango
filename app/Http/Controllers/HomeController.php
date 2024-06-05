@@ -36,6 +36,7 @@ class HomeController extends Controller
     public function queue(Request $request) {
 
         $query = Beatmap::query();
+
         if ($request->has('map_style') && $request->get('map_style') !== 'all') {
             $query = $query->where('map_style', $request->get('map_style'));
         }
@@ -43,7 +44,32 @@ class HomeController extends Controller
             $query = $query->where('status', $request->get('status'));
         }
 
-        $beatmaps = $query->orderBy('id', 'desc')->paginate(12);
+        $beatmaps = $query->orderBy('id', 'desc')->paginate(12)->withQueryString();;
+        return Inertia::render('Queue', ['beatmaps' => $beatmaps]);
+    }
+
+    /**
+     * Render queue page with user requests only
+     * @return \Inertia\Response
+     */
+
+    public function my_requests(Request $request) {
+
+        if (auth()->user()) {
+            $query = Beatmap::query()->where('request_author', auth()->user()->id);
+
+            if ($request->has('map_style') && $request->get('map_style') !== 'all') {
+                $query = $query->where('map_style', $request->get('map_style'));
+            }
+            if ($request->has('status') && $request->get('status') !== 'all') {
+                $query = $query->where('status', $request->get('status'));
+            }
+
+            $beatmaps = $query->orderBy('id', 'desc')->paginate(12)->withQueryString();
+        } else {
+            $beatmaps = null;
+        }
+
         return Inertia::render('Queue', ['beatmaps' => $beatmaps]);
     }
 
