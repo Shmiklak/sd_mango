@@ -17,12 +17,12 @@ export const NominatorResponseForm = (props) => {
     return (
         <>
             <h2 className="mt-4 mb-3">Edit my response</h2>
-            <p className="mt-2 mb-2">
-                <strong className="accent-text">IMPORTANT NOTE FOR BEATMAP NOMINATORS: </strong>
-                Please do not mark beatmap as "INVALID" in case you are simply not interested in it.
-                In case you are not interested in the map, just skip it. "INVALID" marker should only be used when the
-                beatmap has critical quality issues or does not satisfy the queue rules.
-            </p>
+            {/*<p className="mt-2 mb-2">*/}
+            {/*    <strong className="accent-text">IMPORTANT NOTE FOR BEATMAP NOMINATORS: </strong>*/}
+            {/*    Please do not mark beatmap as "INVALID" in case you are simply not interested in it.*/}
+            {/*    In case you are not interested in the map, just skip it. "INVALID" marker should only be used when the*/}
+            {/*    beatmap has critical quality issues or does not satisfy the queue rules.*/}
+            {/*</p>*/}
             <Errors errors={errors}/>
             <form onSubmit={submit}>
                 <label>
