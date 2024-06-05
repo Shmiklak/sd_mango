@@ -6,7 +6,8 @@ import Errors from "@/Components/Errors.jsx";
 const SendRequest = ({ auth }) => {
     const { data, setData, post, processing, errors, reset } = useForm({
         beatmap_link: '',
-        comments: ''
+        comments: '',
+        map_style: 'Jumps'
     });
 
     const submit = (e) => {
@@ -41,6 +42,16 @@ const SendRequest = ({ auth }) => {
                            value={data.beatmap_link}
                            onChange={(e) => setData('beatmap_link', e.target.value)}
                     />
+
+                    <label>
+                        Beatmap style:
+                    </label>
+                    <select className="form-control" name="status" id="status" value={data.map_style}
+                            onChange={(e) => setData('map_style', e.target.value)}>
+                        <option value="Jumps">Jumps</option>
+                        <option value="Streams">Streams</option>
+                        <option value="Difficult mechanics">Difficult mechanics</option>
+                    </select>
 
                     <label>
                         Additional comments:

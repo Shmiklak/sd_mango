@@ -62,3 +62,18 @@ p {
     font-size: 3rem;
     font-weight: bold;
 }
+
+.admin-links {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: $accent_color;
+    color: #FFF;
+    font-weight: bold;
+    padding: 10px;
+    a:hover {
+        color: #FFF;
+        text-decoration: underline;
+    }
+}

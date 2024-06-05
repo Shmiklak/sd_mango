@@ -25,3 +25,19 @@ textarea.form-control {
     height: 100px;
     resize: vertical;
 }
+
+.queue-filter {
+    margin: 30px auto;
+    background: #FFF;
+    border: 1px solid #CCC;
+    padding: 10px;
+    border-radius: 8px;
+
+    .form-control {
+        margin-bottom: 0;
+    }
+
+    .btn {
+        padding: 13px;
+    }
+}

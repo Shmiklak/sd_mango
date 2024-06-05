@@ -37,17 +37,21 @@ export const Beatmap = ( props ) => {
                         mapped by {props.beatmap.creator}
                     </div>
                     <div className="row mt-3">
-                        <div className="col-4">
+                        <div className="col-4 mt-2">
                             <strong>Genre</strong><br/>
                             {props.beatmap.genre}
                         </div>
-                        <div className="col-4">
+                        <div className="col-4 mt-2">
                             <strong>Language</strong><br/>
                             {props.beatmap.language}
                         </div>
-                        <div className="col-4">
+                        <div className="col-4 mt-2">
                             <strong>BPM</strong><br/>
                             {props.beatmap.bpm}
+                        </div>
+                        <div className="col-4 mt-2">
+                            <strong>Style</strong><br/>
+                            {props.beatmap.map_style}
                         </div>
                     </div>
                     <p className="mt-3 mapper-comment">

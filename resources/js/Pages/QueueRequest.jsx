@@ -37,17 +37,21 @@ const QueueRequest = ({ auth, beatmap }) => {
                                     requested by <strong>{beatmap.author.username}</strong> at <strong>{new Date(beatmap.created_at).toUTCString()}</strong>
                                 </div>
                                 <div className="row mt-3">
-                                    <div className="col-4">
+                                    <div className="col-4 mt-2">
                                         <strong>Genre</strong><br/>
                                         {beatmap.genre}
                                     </div>
-                                    <div className="col-4">
+                                    <div className="col-4 mt-2">
                                         <strong>Language</strong><br/>
                                         {beatmap.language}
                                     </div>
-                                    <div className="col-4">
+                                    <div className="col-4 mt-2">
                                         <strong>BPM</strong><br/>
                                         {beatmap.bpm}
+                                    </div>
+                                    <div className="col-4 mt-2">
+                                        <strong>Style</strong><br/>
+                                        {beatmap.map_style}
                                     </div>
                                 </div>
                                 <p className="mt-3 mapper-comment">

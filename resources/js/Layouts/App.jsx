@@ -1,6 +1,8 @@
 import {router, usePage} from "@inertiajs/react";
 import {useState} from "react";
 import PageHeader from "@/Components/PageHeader.jsx";
+import {AdminLinks} from "@/Components/AdminLinks.jsx";
+import {PageFooter} from "@/Components/PageFooter.jsx";
 
 const App = ({children}) => {
     const { auth } = usePage().props;
@@ -20,6 +22,8 @@ const App = ({children}) => {
                     {children}
                 </div>
             </main>
+            <PageFooter/>
+            { auth.user !== null && auth.user.admin_access ? (<AdminLinks/>) : (<></>) }
         </div>
     )
 }

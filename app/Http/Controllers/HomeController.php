@@ -33,8 +33,17 @@ class HomeController extends Controller
      * Render queue page
      * @return \Inertia\Response
      */
-    public function queue() {
-        $beatmaps = Beatmap::orderBy('id', 'desc')->paginate(12);
+    public function queue(Request $request) {
+
+        $query = Beatmap::query();
+        if ($request->has('map_style') && $request->get('map_style') !== 'all') {
+            $query = $query->where('map_style', $request->get('map_style'));
+        }
+        if ($request->has('status') && $request->get('status') !== 'all') {
+            $query = $query->where('status', $request->get('status'));
+        }
+
+        $beatmaps = $query->orderBy('id', 'desc')->paginate(12);
         return Inertia::render('Queue', ['beatmaps' => $beatmaps]);
     }
 
@@ -49,7 +58,8 @@ class HomeController extends Controller
     public function send_request_post(Request $request) {
         $this->validate($request, [
             'beatmap_link' => 'required|url',
-            'comments' => 'sometimes'
+            'comments' => 'sometimes',
+            'map_style' => 'required'
         ]);
 
         $parsed_url = parse_url($request->get('beatmap_link'));
@@ -72,6 +82,7 @@ class HomeController extends Controller
         $beatmap = Beatmap::create([
             'request_author' => auth()->user()->id,
             'comment' => $request->get('comments'),
+            'map_style' => $request->get('map_style'),
             'beatmapset_id' => $beatmap_id,
             'title' => $beatmap_data["title"],
             'artist' => $beatmap_data["artist"],

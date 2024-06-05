@@ -51,4 +51,8 @@ class User extends Authenticatable
     public function hasElevatedAccess() {
         return $this->elevated_access;
     }
+
+    public function hasAdminAccess() {
+        return $this->admin_access;
+    }
 }

@@ -29,6 +29,11 @@ return new class extends Migration
                 'ACCEPTED',
                 'NOMINATED'
             ])->default('PENDING');
+            $table->enum('map_style', [
+               'Jumps',
+               'Streams',
+               'Difficult mechanics'
+            ]);
             $table->timestamps();
         });
     }

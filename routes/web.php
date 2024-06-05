@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NominatorController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,10 @@ Route::get('/queue/request/{id}', [HomeController::class, 'queue_request'])->nam
 
 Route::middleware('elevated_access')->group(function () {
     Route::post('/update-response', [NominatorController::class, 'update_response'])->name('update_response');
+});
+
+Route::middleware('admin')->group(function () {
+   Route::get('/edit-team', [AdminController::class, 'edit_team'])->name('edit_team');
 });
 
 Route::get('osu_auth', [OsuAuthController::class, 'redirectToProvider'])->name('osu_login');
