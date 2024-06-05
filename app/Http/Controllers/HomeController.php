@@ -45,7 +45,7 @@ class HomeController extends Controller
         }
 
         $beatmaps = $query->orderBy('id', 'desc')->paginate(12)->withQueryString();;
-        return Inertia::render('Queue', ['beatmaps' => $beatmaps]);
+        return Inertia::render('Queue', ['beatmaps' => $beatmaps, 'title' => 'Queue']);
     }
 
     /**
@@ -70,7 +70,7 @@ class HomeController extends Controller
             $beatmaps = null;
         }
 
-        return Inertia::render('Queue', ['beatmaps' => $beatmaps]);
+        return Inertia::render('Queue', ['beatmaps' => $beatmaps, 'title' => 'My Requests']);
     }
 
     /**

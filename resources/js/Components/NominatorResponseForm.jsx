@@ -34,6 +34,7 @@ export const NominatorResponseForm = (props) => {
                     <option value="RECHECKED">Rechecked</option>
                     <option value="NOMINATED">Nominated</option>
                     <option value="REJECTED">Rejected</option>
+                    <option value="REMOVE_MY_RESPONSE">Remove my response</option>
                 </select>
                 <label>
                     Additional comments:

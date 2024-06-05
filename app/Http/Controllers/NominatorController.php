@@ -6,6 +6,7 @@ use App\Models\Beatmap;
 use App\Models\NominatorResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Inertia\Inertia;
 
 class NominatorController extends Controller
 {
@@ -19,6 +20,13 @@ class NominatorController extends Controller
         $nominator_id = auth()->user()->id;
 
         $response = NominatorResponse::where('nominator_id', $nominator_id)->where('request_id', $request->get('request_id'))->first();
+
+        if ($request->status === 'REMOVE_MY_RESPONSE' && $response !== null) {
+            $response->delete();
+            $beatmap = Beatmap::find($request->get('request_id'));
+            $beatmap->updateStatus();
+            return redirect()->back();
+        }
 
         if ($response !== null) {
             $response->status = $request->get('status');
@@ -43,5 +51,27 @@ class NominatorController extends Controller
         $beatmap->updateStatus();
 
         return redirect()->back();
+    }
+
+    public function my_responses(Request $request) {
+
+        if (auth()->user()) {
+            $query = Beatmap::query()->whereHas('responses', function($q) {
+                $q->where('nominator_id', auth()->user()->id);
+            });
+
+            if ($request->has('map_style') && $request->get('map_style') !== 'all') {
+                $query = $query->where('map_style', $request->get('map_style'));
+            }
+            if ($request->has('status') && $request->get('status') !== 'all') {
+                $query = $query->where('status', $request->get('status'));
+            }
+
+            $beatmaps = $query->orderBy('id', 'desc')->paginate(12)->withQueryString();
+        } else {
+            $beatmaps = null;
+        }
+
+        return Inertia::render('Queue', ['beatmaps' => $beatmaps, 'title' => 'My Responses']);
     }
 }

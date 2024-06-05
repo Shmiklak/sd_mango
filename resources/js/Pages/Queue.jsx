@@ -3,7 +3,7 @@ import App from "@/Layouts/App.jsx";
 import LoginRequired from "@/Components/LoginRequired.jsx";
 import {Beatmap} from "@/Components/Beatmap.jsx";
 
-const Queue = ({ auth, beatmaps }) => {
+const Queue = ({ auth, beatmaps, title }) => {
 
     let params = new URLSearchParams(window.location.search);
     let query_url = window.location.pathname;
@@ -22,10 +22,10 @@ const Queue = ({ auth, beatmaps }) => {
 
     return (
         <>
-            <Head title="Queue"/>
+            <Head title={title}/>
             { auth.user === null ? (<LoginRequired/>) : (<>
                 <div className="text-center">
-                    <h1 className="section-title text-center">{query_url === '/queue' ? 'Queue' : 'My requests'}</h1>
+                    <h1 className="section-title text-center">{title}</h1>
                 </div>
 
                 <div className="queue-filter">

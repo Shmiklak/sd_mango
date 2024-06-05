@@ -28,6 +28,7 @@ const PageHeader = props => {
                             <MenuLink link="send_request" text="Request"/>
                             <MenuLink link="queue" text="Queue"/>
                             <MenuLink link="my_requests" text="My Requests"/>
+                            {props.auth.user !== null && props.auth.user.elevated_access ? (<MenuLink link="my_responses" text="My Responses"/>) : (<></>)}
                             <MenuLink link="team" text="Team"/>
                         </ul>
                         <div className="page-header-nav__profile">

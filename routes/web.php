@@ -27,6 +27,7 @@ Route::post('/send-request', [HomeController::class, 'send_request_post'])->name
 Route::get('/queue/request/{id}', [HomeController::class, 'queue_request'])->name('queue_request');
 
 Route::middleware('elevated_access')->group(function () {
+    Route::get('/my_responses', [NominatorController::class, 'my_responses'])->name('my_responses');
     Route::post('/update-response', [NominatorController::class, 'update_response'])->name('update_response');
 });
 
