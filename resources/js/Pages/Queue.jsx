@@ -4,7 +4,6 @@ import LoginRequired from "@/Components/LoginRequired.jsx";
 import {Beatmap} from "@/Components/Beatmap.jsx";
 
 const Queue = ({ auth, beatmaps }) => {
-    console.log(beatmaps);
     return (
         <>
             <Head title="Queue"/>
@@ -14,7 +13,7 @@ const Queue = ({ auth, beatmaps }) => {
                 </div>
                 <div className="row justify-content-center">
                     {beatmaps.data.map((beatmap) => (
-                        <Beatmap beatmap={beatmap}/>
+                        <Beatmap beatmap={beatmap} auth={auth}/>
                     ))}
                 </div>
 

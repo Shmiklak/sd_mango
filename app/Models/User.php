@@ -39,4 +39,16 @@ class User extends Authenticatable
      */
     protected $casts = [
     ];
+
+    public function requests() {
+        return $this->hasMany(Beatmap::class, 'request_author');
+    }
+
+    public function responses() {
+        return $this->hasMany(NominatorResponse::class, 'nominator_id');
+    }
+
+    public function hasElevatedAccess() {
+        return $this->elevated_access;
+    }
 }

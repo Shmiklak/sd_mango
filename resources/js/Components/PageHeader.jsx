@@ -1,7 +1,13 @@
-import {Link} from "@inertiajs/react";
+import {Link, router} from "@inertiajs/react";
 import MenuLink from "@/Components/MenuLink.jsx";
+import {useState} from "react";
 
 const PageHeader = props => {
+
+    const [menuOpen, setMenuOpen] = useState(false);
+    router.on('start', () => {
+        setMenuOpen(false)
+    })
     return (
         <>
             <header className="page-header">
@@ -12,7 +18,12 @@ const PageHeader = props => {
                                 <img src="/static/assets/images/mango.png" alt="#sd_mango"/>
                             </Link>
                         </div>
-                        <ul className="page-header-nav__menu">
+                        <ul className={menuOpen ? "page-header-nav__menu active" : "page-header-nav__menu"}>
+                            <li className="page-header-nav__menu_mobile_logo">
+                                <Link href={route('home')}>
+                                    <img src="/static/assets/images/mango.png" alt="#sd_mango"/>
+                                </Link>
+                            </li>
                             <MenuLink link="home" text="Home"/>
                             <MenuLink link="send_request" text="Request"/>
                             <MenuLink link="queue" text="Queue"/>
@@ -35,6 +46,9 @@ const PageHeader = props => {
                                 </div>
                             )}
                         </div>
+                        <button onClick={() => setMenuOpen(!menuOpen)} className="btn btn-primary mobile-burger">
+                            <img src="/static/assets/images/icons/menu.svg"/>
+                        </button>
                     </nav>
                 </div>
             </header>

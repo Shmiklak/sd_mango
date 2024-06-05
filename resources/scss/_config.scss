@@ -3,3 +3,9 @@ $accent_color: #EA564B;
 $text_color: #253539;
 $secondary_color: #10D4E6;
 $bs-pagination-active-border-color: $accent_color;
+
+#app .pagination {
+    --bs-pagination-active-bg: #EA564B;
+    --bs-pagination-color: #EA564B;
+    --bs-pagination-active-border-color: #EA564B;
+}

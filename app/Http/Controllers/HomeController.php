@@ -84,4 +84,9 @@ class HomeController extends Controller
 
         return redirect()->route('queue')->with(['success' => true]);
     }
+
+    public function queue_request($id) {
+        $beatmap = Beatmap::with('responses')->with('responses.nominator')->with('author')->findOrFail($id);
+        return Inertia::render('QueueRequest', ['beatmap' => $beatmap]);
+    }
 }

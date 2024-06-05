@@ -14,6 +14,7 @@
     &-image {
         width: 100%;
         height: auto;
+        border-radius: 8px;
     }
     &-title {
         font-weight: bold;
@@ -22,5 +23,50 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    &-cover {
+        position: relative;
+    }
+
+    &-view-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        padding: 10px;
+        img {
+            width: 20px;
+        }
+    }
+
+    .mapper-comment {
+        white-space: pre-wrap;
+    }
+
+    &-status {
+        padding: 10px;
+        font-weight: bold;
+        font-size: 18px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #FFF;
+        border-radius: 8px;
+
+        &-PENDING {
+            background: #1b5583;
+        }
+
+        &-INVALID {
+            background: #a61212;
+        }
+
+        &-ACCEPTED {
+            background: #1e860d;
+        }
+
+        &-NOMINATED {
+            background: #7b16b6;
+        }
     }
 }

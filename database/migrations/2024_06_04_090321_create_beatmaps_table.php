@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('beatmaps', function (Blueprint $table) {
             $table->id();
-            $table->integer('request_author')->index();
+            $table->foreignId('request_author')->index();
             $table->text('comment')->nullable();
-            $table->integer('beatmapset_id')->unique()->index();
+            $table->foreignId('beatmapset_id')->index();
             $table->string('title');
             $table->string('artist');
             $table->string('creator');
@@ -24,12 +24,11 @@ return new class extends Migration
             $table->string('language')->nullable();
             $table->float('bpm')->nullable();
             $table->enum('status', [
-                'NEW',
-                'REJECTED',
+                'PENDING',
+                'INVALID',
                 'ACCEPTED',
-                'NOMINATED',
-                'RANKED'
-            ])->default('NEW');
+                'NOMINATED'
+            ])->default('PENDING');
             $table->timestamps();
         });
     }

@@ -17,6 +17,16 @@
             color: #FFF;
         }
     }
+
+    &-default {
+        background: $text_color;
+        color: #FFF;
+        transition: 300ms;
+        &:hover {
+            background: darken($text_color, 5%);
+            color: #FFF;
+        }
+    }
 }
 
 @media (max-width: 991px) {

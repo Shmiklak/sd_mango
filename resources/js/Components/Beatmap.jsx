@@ -1,12 +1,20 @@
-export const Beatmap = ( props ) => {
+import {Link} from "@inertiajs/react";
+import {BeatmapStatus} from "@/Components/BeatmapStatus.jsx";
 
+export const Beatmap = ( props ) => {
+    console.log(props.auth);
     return (
         <div className="col-lg-4 col-md-6 col-12 mb-3">
             <div className="beatmap">
                 <div className="beatmap-cover">
                     <a href={`https://osu.ppy.sh/beatmapsets/${props.beatmap.beatmapset_id}`} target="_blank">
-                        <img src={props.beatmap.cover} alt={`${props.beatmap.artist} - ${ props.beatmap.title }`} className="beatmap-image"/>
+                        <img src={props.beatmap.cover} alt={`${props.beatmap.artist} - ${props.beatmap.title}`}
+                             className="beatmap-image"/>
                     </a>
+                    <Link href={route('queue_request', props.beatmap.id)} className="btn btn-primary beatmap-view-btn">
+                        <img src="/static/assets/images/icons/eye.svg"/>
+                    </Link>
+                    <BeatmapStatus beatmap={props.beatmap} />
                 </div>
                 <div className="beatmap-text">
                     <div className="text-center mb-3">
@@ -36,7 +44,7 @@ export const Beatmap = ( props ) => {
                             {props.beatmap.bpm}
                         </div>
                     </div>
-                    <p className="mt-3">
+                    <p className="mt-3 mapper-comment">
                         <strong>Mapper comment: </strong> {props.beatmap.comment}
                     </p>
                 </div>

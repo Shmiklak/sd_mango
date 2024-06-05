@@ -5,7 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\NominatorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +22,11 @@ Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::get('/queue', [HomeController::class, 'queue'])->name('queue');
 Route::get('/send-request', [HomeController::class, 'send_request'])->name('send_request');
 Route::post('/send-request', [HomeController::class, 'send_request_post'])->name('send_request.post');
+Route::get('/queue/request/{id}', [HomeController::class, 'queue_request'])->name('queue_request');
+
+Route::middleware('elevated_access')->group(function () {
+    Route::post('/update-response', [NominatorController::class, 'update_response'])->name('update_response');
+});
 
 Route::get('osu_auth', [OsuAuthController::class, 'redirectToProvider'])->name('osu_login');
 Route::get('osu_login', [OsuAuthController::class, 'handleProviderCallback']);
