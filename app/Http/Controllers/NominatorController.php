@@ -24,7 +24,7 @@ class NominatorController extends Controller
             $response->status = $request->get('status');
             $response->comment = $request->get('comment');
         } else {
-            $other_responses = NominatorResponse::where('request_id', $request->get('request_id'))->whereNot('status', 'INVALID')->count();
+            $other_responses = NominatorResponse::where('request_id', $request->get('request_id'))->whereNot('status', 'REJECTED')->count();
             if ($other_responses >= 2) {
                 throw ValidationException::withMessages([
                     'request_id' => 'This beatmap had already been accepted by 2 nominators. Please ask one of them to either change their decision or select a different beatmap.'

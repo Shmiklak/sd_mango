@@ -30,13 +30,13 @@ class Beatmap extends Model
     public function updateStatus() {
         $nominated_responses = $this->responses()->where('status', 'NOMINATED')->count();
         $accepted_responses = $this->responses()->whereIn('status',  ['ACCEPTED', 'MODDED', 'RECHECKED'])->count();
-        $invalid_responses = $this->responses()->where('status',  'INVALID')->count();
+        $invalid_responses = $this->responses()->where('status',  'REJECTED')->count();
         if ($nominated_responses > 0) {
             $this->status = 'NOMINATED';
         } else if ($accepted_responses > 0) {
             $this->status = 'ACCEPTED';
         } else if ($invalid_responses > 0) {
-            $this->status = 'INVALID';
+            $this->status = 'REJECTED';
         }
 
         $this->save();

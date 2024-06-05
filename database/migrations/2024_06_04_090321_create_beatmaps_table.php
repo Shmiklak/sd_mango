@@ -25,7 +25,7 @@ return new class extends Migration
             $table->float('bpm')->nullable();
             $table->enum('status', [
                 'PENDING',
-                'INVALID',
+                'REJECTED',
                 'ACCEPTED',
                 'NOMINATED'
             ])->default('PENDING');
