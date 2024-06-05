@@ -37,7 +37,7 @@ const Queue = ({ auth, beatmaps }) => {
                                 <select className="form-control" value={data.status} onChange={(e) => setData('status', e.target.value)}>
                                     <option value="all">All</option>
                                     <option value="PENDING">Pending</option>
-                                    <option value="INVALID">Invalid</option>
+                                    <option value="REJECTED">Rejected</option>
                                     <option value="ACCEPTED">Accepted</option>
                                     <option value="NOMINATED">Nominated</option>
                                 </select>
