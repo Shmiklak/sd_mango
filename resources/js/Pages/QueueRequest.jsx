@@ -2,9 +2,10 @@ import {Head, Link} from "@inertiajs/react";
 import App from "@/Layouts/App.jsx";
 import {NominatorResponseForm} from "@/Components/NominatorResponseForm.jsx";
 import {BeatmapStatus} from "@/Components/BeatmapStatus.jsx";
+import {useState} from "react";
 
 const QueueRequest = ({ auth, beatmap }) => {
-    console.log(beatmap);
+    const [cover, setCover] = useState(beatmap.cover);
     return (
         <>
             <Head title={`${beatmap.artist} - ${beatmap.title}`} />
@@ -16,14 +17,16 @@ const QueueRequest = ({ auth, beatmap }) => {
                     <div className="col-lg-6">
                         <div className="queue-request-beatmap mb-3">
                             <div className="beatmap-cover">
-                                <img src={beatmap.cover} alt={`${beatmap.artist} - ${beatmap.title}`}
-                                     className="beatmap-image w-100"/>
+                                <img src={cover}
+                                     onError={(e) => setCover('/static/assets/images/bg_error.png')}
+                                     alt={`${beatmap.artist} - ${beatmap.title}`}
+                                     className="beatmap-image"/>
                                 <BeatmapStatus beatmap={beatmap}/>
                             </div>
 
                             <div className="beatmap-text">
                                 <div className="text-center mb-3">
-                                    <audio controls={true}>
+                                <audio controls={true}>
                                         <source src={`https://b.ppy.sh/preview/${beatmap.beatmapset_id}.mp3`}/>
                                     </audio>
                                 </div>

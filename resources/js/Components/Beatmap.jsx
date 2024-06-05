@@ -1,14 +1,20 @@
 import {Link} from "@inertiajs/react";
 import {BeatmapStatus} from "@/Components/BeatmapStatus.jsx";
+import {useState} from "react";
 
 export const Beatmap = ( props ) => {
-    console.log(props.auth);
+
+    const [cover, setCover] = useState(props.beatmap.cover);
+
     return (
         <div className="col-lg-4 col-md-6 col-12 mb-3">
             <div className="beatmap">
                 <div className="beatmap-cover">
                     <a href={`https://osu.ppy.sh/beatmapsets/${props.beatmap.beatmapset_id}`} target="_blank">
-                        <img src={props.beatmap.cover} alt={`${props.beatmap.artist} - ${props.beatmap.title}`}
+
+                        <img src={cover}
+                             onError={(e) => setCover('/static/assets/images/bg_error.png')}
+                             alt={`${props.beatmap.artist} - ${props.beatmap.title}`}
                              className="beatmap-image"/>
                     </a>
                     <Link href={route('queue_request', props.beatmap.id)} className="btn btn-primary beatmap-view-btn">
