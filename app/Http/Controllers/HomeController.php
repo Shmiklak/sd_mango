@@ -25,7 +25,7 @@ class HomeController extends Controller
      * @return \Inertia\Response
      */
     public function team() {
-        $members = Member::orderBy('username', 'asc')->all();
+        $members = Member::orderBy('username', 'asc')->get();
         return Inertia::render('Team', ['members' => $members]);
     }
 
