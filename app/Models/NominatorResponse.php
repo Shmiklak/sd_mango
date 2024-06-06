@@ -23,4 +23,19 @@ class NominatorResponse extends Model
     public function request() {
         return $this->belongsTo(Beatmap::class, 'request_id');
     }
+
+    public function matchingColor() {
+        switch ($this->status) {
+            case "ACCEPTED":
+                return 0x00ff00;
+            case "REJECTED":
+                return 0xA80A0A;
+            case "MODDED":
+                return 0x10D4E6;
+            case "RECHECKED":
+                return 0xE21FCF;
+            case "NOMINATED":
+                return 0x8C1FE2;
+        }
+    }
 }

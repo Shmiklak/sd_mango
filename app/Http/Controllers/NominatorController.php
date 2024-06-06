@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Beatmap;
 use App\Models\NominatorResponse;
+use App\Services\Discord;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
@@ -49,6 +50,8 @@ class NominatorController extends Controller
 
         $beatmap = Beatmap::find($request->get('request_id'));
         $beatmap->updateStatus();
+
+        Discord::sendMessage($response);
 
         return redirect()->back();
     }
