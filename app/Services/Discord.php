@@ -20,7 +20,7 @@ class Discord {
 
 
         $webhook = new DiscordWebhook($embedMessage);
-        $webhook->setWebhookUrl("https://discordapp.com/api/webhooks/1248156598807953480/RCwkEcWHeV5SOM8S7KreqlWxY02409gSQs1rcsIhQppAJ0gPAq8FjkvfySeekSTBs-yN");
+        $webhook->setWebhookUrl(env("DISCORD_WEBHOOK"));
         $webhook->send();
     }
 }
