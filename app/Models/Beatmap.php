@@ -29,6 +29,9 @@ class Beatmap extends Model
     }
 
     public function updateStatus() {
+
+        $old_status = $this->status;
+
         $nominated_responses = $this->responses()->where('status', 'NOMINATED')->count();
         $accepted_responses = $this->responses()->whereIn('status',  ['ACCEPTED', 'MODDED', 'RECHECKED'])->count();
         $invalid_responses = $this->responses()->where('status',  'INVALID')->count();
@@ -45,7 +48,10 @@ class Beatmap extends Model
             $this->status = 'PENDING';
         }
         $this->save();
-        $this->sendMessage();
+
+        if ($this->status != $old_status) {
+            $this->sendMessage();
+        }
     }
 
     public function sendMessage() {
