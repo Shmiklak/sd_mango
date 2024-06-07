@@ -54,7 +54,7 @@ class NominatorController extends Controller
 
         Discord::sendMessage($response);
 
-        if ($request->status === 'ACCEPTED' || $request->get('status') === 'REJECTED') {
+        if ($request->get('status') === 'ACCEPTED' || $request->get('status') === 'REJECTED') {
             Artisan::call("irc:send '{$beatmap->creator}' 'Hello! I am here to tell you that {$response->nominator->username} has marked your [https://osu.ppy.sh/beatmapsets/{$beatmap->beatmapset_id} {$beatmap->artist} - {$beatmap->title}] beatmap as {$response->status} on [https://sdmango.shmiklak.uz #sd_mango website]. You can contact this nominator for details. Please note, this is an automated message.'" );
         }
 
