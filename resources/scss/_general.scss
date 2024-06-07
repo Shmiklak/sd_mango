@@ -77,3 +77,13 @@ p {
         text-decoration: underline;
     }
 }
+
+.code-block {
+    width: 100%;
+    display: block;
+    background: rgb(0 0 0 / 15%);
+    padding: 15px;
+    color: #000000;
+    border-radius: 8px;
+    border: 1px solid rgb(0 0 0 / 15%);
+}

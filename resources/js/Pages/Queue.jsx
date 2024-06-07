@@ -28,6 +28,18 @@ const Queue = ({ auth, beatmaps, title }) => {
                     <h1 className="section-title text-center">{title}</h1>
                 </div>
 
+                <div className="alert alert-warning">
+                    <h4 className="alert-heading">IMPORTANT</h4>
+                    <p>
+                        In case your beatmap is accepted by two <strong>sd_mango</strong> nominators, make sure to add the following code in your map's description
+                    </p>
+                    <code className="mt-2 code-block">
+                        [notice][centre][size=150]<br/>
+                        🥭[url=https://x.com/sd_mango_osu][b][i]This map was brought to you by sd_mango [/b][/i][/url]🥭<br/>
+                        [/centre][/size][/notice]
+                    </code>
+                </div>
+
                 <div className="queue-filter">
                     <form onSubmit={submit}>
                         <div className="row">
