@@ -15,6 +15,9 @@
         width: 100%;
         height: auto;
         border-radius: 8px;
+        min-height: 145px;
+        object-fit: cover;
+        object-position: center;
     }
     &-title {
         font-weight: bold;
