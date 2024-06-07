@@ -55,12 +55,16 @@ class Beatmap extends Model
     }
 
     public function sendMessage() {
+
+        $username = str_replace(' ', '_', $this->author->username);
+        $beatmap_title = "{$this->beatmapset_id} {$this->artist} - {$this->title}";
+
         switch ($this->status) {
             case 'INVALID':
-                Artisan::call("irc:send '{$this->author->username}' 'Hello! Unfortunately your request for [https://osu.ppy.sh/beatmapsets/{$this->beatmapset_id} {$this->artist} - {$this->title}] on [https://sdmango.shmiklak.uz #sd_mango website] has been marked as invalid. You can view your request\'s [https://sdmango.shmiklak.uz/queue/request/{$this->id} page] to see more details. Please note, this is an automated message.'" );
+                Artisan::call("irc:send '{$username}' 'Hello! Unfortunately your request for [https://osu.ppy.sh/beatmapsets/{$beatmap_title}] on [https://sdmango.shmiklak.uz #sd_mango website] has been marked as invalid. You can view your request\'s [https://sdmango.shmiklak.uz/queue/request/{$this->id} page] to see more details. Please note, this is an automated message.'" );
                 break;
             case 'HIDDEN':
-                Artisan::call("irc:send '{$this->author->username}' 'Hello! Unfortunately the majority of #sd_mango members are not interested in the beatmap you requested ([https://osu.ppy.sh/beatmapsets/{$this->beatmapset_id} {$this->artist} - {$this->title}]). You can view your request\'s [https://sdmango.shmiklak.uz/queue/request/{$this->id} page] to see more details. Please note, this is an automated message.'" );
+                Artisan::call("irc:send '{$username}' 'Hello! Unfortunately the majority of #sd_mango members are not interested in the beatmap you requested ([https://osu.ppy.sh/beatmapsets/{$beatmap_title}]). You can view your request\'s [https://sdmango.shmiklak.uz/queue/request/{$this->id} page] to see more details. Please note, this is an automated message.'" );
                 break;
         }
     }
