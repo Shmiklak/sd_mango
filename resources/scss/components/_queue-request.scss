@@ -38,7 +38,7 @@
             background: #1b5583;
         }
 
-        &-REJECTED {
+        &-INVALID {
             background: #a61212;
         }
 
@@ -48,6 +48,10 @@
 
         &-NOMINATED {
             background: #7b16b6;
+        }
+
+        &-HIDDEN {
+            display: none;
         }
     }
 }

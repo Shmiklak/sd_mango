@@ -6,7 +6,7 @@ export const NominatorResponseForm = (props) => {
     const { data, setData, post, processing, errors, reset } = useForm({
         request_id: props.request_id,
         comment: '',
-        status: 'ACCEPTED'
+        status: 'UNINTERESTED'
     });
 
     const submit = (e) => {
@@ -29,11 +29,12 @@ export const NominatorResponseForm = (props) => {
                     Status:
                 </label>
                 <select className="form-control" name="status" id="status" value={data.status} onChange={(e) => setData('status', e.target.value)}>
+                    <option value="UNINTERESTED">Not interested</option>
                     <option value="ACCEPTED">Accepted</option>
                     <option value="MODDED">Modded</option>
                     <option value="RECHECKED">Rechecked</option>
                     <option value="NOMINATED">Nominated</option>
-                    <option value="REJECTED">Rejected</option>
+                    <option value="INVALID">Invalid</option>
                     <option value="REMOVE_MY_RESPONSE">Remove my response</option>
                 </select>
                 <label>

@@ -28,7 +28,7 @@ class NominatorResponse extends Model
         switch ($this->status) {
             case "ACCEPTED":
                 return 0x00ff00;
-            case "REJECTED":
+            case "INVALID":
                 return 0xA80A0A;
             case "MODDED":
                 return 0x10D4E6;
@@ -36,6 +36,8 @@ class NominatorResponse extends Model
                 return 0xE21FCF;
             case "NOMINATED":
                 return 0x8C1FE2;
+            case "UNINTERESTED":
+                return 0xA0A0A0;
         }
     }
 }

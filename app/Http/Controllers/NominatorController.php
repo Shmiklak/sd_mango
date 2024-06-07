@@ -34,7 +34,7 @@ class NominatorController extends Controller
             $response->status = $request->get('status');
             $response->comment = $request->get('comment');
         } else {
-            $other_responses = NominatorResponse::where('request_id', $request->get('request_id'))->whereNot('status', 'REJECTED')->count();
+            $other_responses = NominatorResponse::where('request_id', $request->get('request_id'))->whereNotIn('status', ['INVALID', 'UNINTERESTED'])->count();
             if ($other_responses >= 2) {
                 throw ValidationException::withMessages([
                     'request_id' => 'This beatmap had already been accepted by 2 nominators. Please ask one of them to either change their decision or select a different beatmap.'
@@ -53,13 +53,8 @@ class NominatorController extends Controller
         $beatmap->updateStatus();
 
         Discord::sendMessage($response);
-
         if ($request->get('status') === 'ACCEPTED') {
             Artisan::call("irc:send '{$beatmap->creator}' 'Hello! I am here to tell you that {$response->nominator->username} has accepted your [https://osu.ppy.sh/beatmapsets/{$beatmap->beatmapset_id} {$beatmap->artist} - {$beatmap->title}] beatmap on [https://sdmango.shmiklak.uz #sd_mango website]. You can contact this nominator for details. Please note, this is an automated message.'" );
-        }
-
-        if ($request->get('status') === 'REJECTED') {
-            Artisan::call("irc:send '{$beatmap->author->username}' 'Hello! I am here to tell you that {$response->nominator->username} has rejected your request on [https://sdmango.shmiklak.uz #sd_mango website] for [https://osu.ppy.sh/beatmapsets/{$beatmap->beatmapset_id} {$beatmap->artist} - {$beatmap->title}] beatmap. You can contact this nominator for details. Please note, this is an automated message.'" );
         }
 
         return redirect()->back();
@@ -75,8 +70,10 @@ class NominatorController extends Controller
             if ($request->has('map_style') && $request->get('map_style') !== 'all') {
                 $query = $query->where('map_style', $request->get('map_style'));
             }
-            if ($request->has('status') && $request->get('status') !== 'all') {
+            if ($request->has('status') && $request->get('status') !== 'default') {
                 $query = $query->where('status', $request->get('status'));
+            } else {
+                $query = $query->whereNotIn('status', ['INVALID', 'HIDDEN']);
             }
 
             $beatmaps = $query->orderBy('id', 'desc')->paginate(12)->withQueryString();

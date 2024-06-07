@@ -41,8 +41,10 @@ class HomeController extends Controller
         if ($request->has('map_style') && $request->get('map_style') !== 'all') {
             $query = $query->where('map_style', $request->get('map_style'));
         }
-        if ($request->has('status') && $request->get('status') !== 'all') {
+        if ($request->has('status') && $request->get('status') !== 'default') {
             $query = $query->where('status', $request->get('status'));
+        } else {
+            $query = $query->whereNotIn('status', ['INVALID', 'HIDDEN']);
         }
 
         $beatmaps = $query->orderBy('id', 'desc')->paginate(12)->withQueryString();;
@@ -62,8 +64,10 @@ class HomeController extends Controller
             if ($request->has('map_style') && $request->get('map_style') !== 'all') {
                 $query = $query->where('map_style', $request->get('map_style'));
             }
-            if ($request->has('status') && $request->get('status') !== 'all') {
+            if ($request->has('status') && $request->get('status') !== 'default') {
                 $query = $query->where('status', $request->get('status'));
+            } else {
+                $query = $query->whereNotIn('status', ['INVALID', 'HIDDEN']);
             }
 
             $beatmaps = $query->orderBy('id', 'desc')->paginate(12)->withQueryString();

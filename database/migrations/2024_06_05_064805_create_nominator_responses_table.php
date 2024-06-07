@@ -21,7 +21,8 @@ return new class extends Migration
                 'MODDED',
                 'RECHECKED',
                 'NOMINATED',
-                'REJECTED'
+                'INVALID',
+                'UNINTERESTED'
             ])->default('ACCEPTED');
             $table->timestamps();
         });

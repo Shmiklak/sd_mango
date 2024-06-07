@@ -48,11 +48,12 @@ const Queue = ({ auth, beatmaps, title }) => {
                                     Request status
                                 </label>
                                 <select className="form-control" value={data.status} onChange={(e) => setData('status', e.target.value)}>
-                                    <option value="all">All</option>
+                                    <option value="default">Default</option>
                                     <option value="PENDING">Pending</option>
-                                    <option value="REJECTED">Rejected</option>
                                     <option value="ACCEPTED">Accepted</option>
                                     <option value="NOMINATED">Nominated</option>
+                                    <option value="INVALID">Invalid</option>
+                                    <option value="HIDDEN">Hidden</option>
                                 </select>
                             </div>
                             <div className="col-lg-4">
