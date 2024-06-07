@@ -36,6 +36,7 @@ class Beatmap extends Model
         $accepted_responses = $this->responses()->whereIn('status',  ['ACCEPTED', 'MODDED', 'RECHECKED'])->count();
         $invalid_responses = $this->responses()->where('status',  'INVALID')->count();
         $uninterested_responses = $this->responses()->where('status',  'UNINTERESTED')->count();
+
         if ($nominated_responses > 0) {
             $this->status = 'NOMINATED';
         } else if ($accepted_responses > 0) {
@@ -55,7 +56,6 @@ class Beatmap extends Model
     }
 
     public function sendMessage() {
-
         $username = str_replace(' ', '_', $this->author->username);
         $beatmap_title = "{$this->beatmapset_id} {$this->artist} - {$this->title}";
 
