@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Beatmap;
 use App\Models\Member;
 use App\Services\OsuApi;
+use Carbon\Carbon;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -87,6 +88,22 @@ class HomeController extends Controller
             'comments' => 'sometimes',
             'map_style' => 'required'
         ]);
+
+        if (auth()->user()->isRestricted()) {
+            throw ValidationException::withMessages([
+                'beatmap_link' => 'Your profile has been banned from using this website.'
+            ]);
+        }
+
+        $request_timer = Carbon::now()->subHours(24);
+
+        $previous_request = Beatmap::where('request_author', auth()->user()->id)->where('created_at', '>=', $request_timer)->first();
+
+        if ($previous_request !== null) {
+            throw ValidationException::withMessages([
+                'beatmap_link' => 'You cannot submit more than one beatmap per day. Please try again later.'
+            ]);
+        }
 
         $parsed_url = parse_url($request->get('beatmap_link'));
         $beatmap_id = explode('/', $parsed_url['path'])[2];

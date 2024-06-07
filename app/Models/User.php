@@ -55,4 +55,8 @@ class User extends Authenticatable
     public function hasAdminAccess() {
         return $this->admin_access;
     }
+
+    public function isRestricted() {
+        return $this->restricted_access;
+    }
 }
