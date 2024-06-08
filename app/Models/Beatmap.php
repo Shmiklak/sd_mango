@@ -57,7 +57,7 @@ class Beatmap extends Model
 
     public function sendMessage() {
         $username = str_replace(' ', '_', $this->author->username);
-        $beatmap_title = "{$this->beatmapset_id} {$this->artist} - {$this->title}";
+        $beatmap_title = str_replace("'", "\'", "{$this->beatmapset_id} {$this->artist} - {$this->title}");
 
         switch ($this->status) {
             case 'INVALID':
