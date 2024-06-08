@@ -1,13 +1,19 @@
-@use 'sass:math';
-@use 'sass:color';
-@import 'config';
-@import 'lib';
-@import 'general';
-@import 'components/header';
-@import 'components/btn';
-@import 'components/team';
-@import 'components/queue';
-@import 'components/beatmap';
-@import 'components/errors';
-@import 'components/queue-request';
-@import 'components/footer';
+@use "sass:math";
+@use "sass:color";
+
+// Tailwind
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "config";
+@import "lib";
+@import "general";
+@import "components/header";
+@import "components/btn";
+@import "components/team";
+@import "components/queue";
+@import "components/beatmap";
+@import "components/errors";
+@import "components/queue-request";
+@import "components/footer";
