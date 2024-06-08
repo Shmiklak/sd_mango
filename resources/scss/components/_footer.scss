@@ -4,10 +4,10 @@
     margin-top: 60px;
     font-weight: bold;
     text-align: center;
-    color: #FFF;
+    color: theme("colors.background");
 
     a:hover {
-        color: #FFF;
+        color: theme("colors.background");
         text-decoration: underline;
     }
 

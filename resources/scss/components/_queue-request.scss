@@ -5,10 +5,10 @@
 
     &-beatmap,
     &-nominators-info {
-        background: #FFF;
+        background: theme("colors.background");
         overflow: hidden;
         border-radius: 8px;
-        border: 1px solid #CCC;
+        border: 1px solid #ccc;
         transition: 300ms;
     }
 
@@ -31,7 +31,7 @@
         position: absolute;
         top: 10px;
         left: 10px;
-        color: #FFF;
+        color: theme("colors.background");
         border-radius: 8px;
 
         &-PENDING {

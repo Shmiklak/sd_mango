@@ -5,9 +5,9 @@
 }
 
 body {
-    background: $bg_color;
-    color: $text_color;
-    font-family: 'Exo 2', sans-serif;
+    background: theme("colors.background");
+    color: theme("colors.foreground");
+    font-family: "Exo 2", sans-serif;
     font-size: 16px;
 }
 
@@ -16,12 +16,12 @@ a {
     text-decoration: none;
     transition: 300ms;
     &:hover {
-        color: $accent_color;
+        color: theme("colors.accent.DEFAULT");
     }
 }
 
 .accent-text {
-    color: $accent_color;
+    color: theme("colors.accent.DEFAULT");
 }
 
 .router-animation {
@@ -48,7 +48,7 @@ main {
 p {
     line-height: 1.5;
     a {
-        color: $accent_color;
+        color: theme("colors.accent.DEFAULT");
         text-decoration: underline;
     }
 }
@@ -58,7 +58,7 @@ p {
 }
 
 .section-title {
-    color: $accent_color;
+    color: theme("colors.accent.DEFAULT");
     font-size: 3rem;
     font-weight: bold;
 }
@@ -68,12 +68,12 @@ p {
     bottom: 0;
     left: 0;
     right: 0;
-    background: $accent_color;
-    color: #FFF;
+    background: theme("colors.accent.DEFAULT");
+    color: theme("colors.accent.foreground");
     font-weight: bold;
     padding: 10px;
     a:hover {
-        color: #FFF;
+        color: theme("colors.background");
         text-decoration: underline;
     }
 }
