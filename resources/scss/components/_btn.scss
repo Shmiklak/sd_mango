@@ -9,11 +9,11 @@
     cursor: pointer;
 
     &-primary {
-        background: theme("colors.accent.DEFAULT");
+        background: theme("colors.primary.DEFAULT");
         color: theme("colors.background");
         transition: 300ms;
         &:hover {
-            background: theme("colors.accent.DEFAULT/80");
+            background: theme("colors.primary.DEFAULT/80");
             // background: darken($accent_color, 5%);
             color: theme("colors.background");
         }
@@ -24,7 +24,7 @@
         color: theme("colors.background");
         transition: 300ms;
         &:hover {
-            background: theme("colors.accent.DEFAULT/80");
+            background: theme("colors.primary.DEFAULT/80");
             // background: darken($text_color, 5%);
             color: theme("colors.foreground");
         }

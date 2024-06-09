@@ -8,11 +8,7 @@ module.exports = {
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
         "./storage/framework/views/*.php",
         "./resources/views/**/*.blade.php",
-        "./resources/js/**/*.jsx",
-        "./pages/**/*.{js,jsx}",
-        "./components/**/*.{js,jsx}",
-        "./app/**/*.{js,jsx}",
-        "./src/**/*.{js,jsx}",
+        "./resources/js/**/*.{js,jsx,ts,tsx}",
     ],
     prefix: "",
     theme: {
@@ -53,6 +49,10 @@ module.exports = {
                     DEFAULT: "hsl(var(--accent))",
                     foreground: "hsl(var(--accent-foreground))",
                 },
+                caution: {
+                    DEFAULT: "hsl(var(--caution))",
+                    foreground: "hsl(var(--caution-foreground))",
+                },
                 popover: {
                     DEFAULT: "hsl(var(--popover))",
                     foreground: "hsl(var(--popover-foreground))",
@@ -83,5 +83,9 @@ module.exports = {
             },
         },
     },
-    plugins: [require("tailwindcss-animate"), forms],
+    plugins: [
+        require("tailwindcss-animate"),
+        require("@tailwindcss/typography"),
+        forms,
+    ],
 };

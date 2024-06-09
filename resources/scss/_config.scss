@@ -21,8 +21,8 @@ $bs-pagination-active-border-color: $accent_color;
         --popover: 0 0% 96%;
         --popover-foreground: 192 21% 18%;
 
-        --primary: 220.9 39.3% 11%;
-        --primary-foreground: 210 20% 98%;
+        --primary: 4 79% 61%;
+        --primary-foreground: var(--background);
 
         --secondary: 185 87% 48%;
         --secondary-foreground: 220.9 39.3% 11%;
@@ -30,11 +30,14 @@ $bs-pagination-active-border-color: $accent_color;
         --muted: 220 14.3% 95.9%;
         --muted-foreground: 220 8.9% 46.1%;
 
-        --accent: 4 79% 61%;
-        --accent-foreground: 192 21% 18%;
+        --accent: 220.9 39.3% 11%;
+        --accent-foreground: var(--background);
 
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 210 20% 98%;
+
+        --caution: 46 100% 90%;
+        --caution-foreground: 45 94% 21%;
 
         --border: 220 13% 91%;
         --input: 220 13% 91%;

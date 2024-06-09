@@ -24,7 +24,7 @@
                 text-align: right;
                 line-height: 1.5;
                 a {
-                    color: theme("colors.accent.DEFAULT");
+                    color: theme("colors.primary.DEFAULT");
                 }
                 img {
                     width: 80px;
@@ -59,7 +59,7 @@
         &__link {
             font-weight: bold;
             &.active {
-                color: theme("colors.accent.DEFAULT");
+                color: theme("colors.primary.DEFAULT");
             }
         }
     }
