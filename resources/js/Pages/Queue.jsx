@@ -29,9 +29,8 @@ const Queue = ({ auth, beatmaps, title }) => {
                 </div>
 
                 <div className="alert alert-warning">
-                    <h4 className="alert-heading">IMPORTANT</h4>
                     <p>
-                        In case your beatmap is accepted by two <strong>sd_mango</strong> nominators, make sure to add the following code in your map's description
+                        If you support what we do here at <strong>sd_mango</strong> and want to shout us out in your map's description, add this to it! (This is entirely optional!)
                     </p>
                     <code className="mt-2 code-block">
                         [notice][centre][size=150]<br/>
