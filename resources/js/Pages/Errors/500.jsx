@@ -1,4 +1,5 @@
-import { Link } from "@inertiajs/react";
+
+import {Link} from "@inertiajs/react";
 
 const Error500 = () => {
     return (
@@ -8,12 +9,10 @@ const Error500 = () => {
                 <p className="mb-5">
                     Something went wrong. Please contact Shmiklak.
                 </p>
-                <Button asChild>
-                    <Link href={route("home")}>Return to home page</Link>
-                </Button>
+                <Link className="btn btn-primary" href={route('home')}>Return to home page</Link>
             </div>
         </>
     );
-};
+}
 
 export default Error500;

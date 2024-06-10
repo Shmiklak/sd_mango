@@ -5,9 +5,9 @@
 }
 
 body {
-    background: theme("colors.background");
-    color: theme("colors.foreground");
-    font-family: "Exo 2", sans-serif;
+    background: $bg_color;
+    color: $text_color;
+    font-family: 'Exo 2', sans-serif;
     font-size: 16px;
 }
 
@@ -15,14 +15,13 @@ a {
     color: inherit;
     text-decoration: none;
     transition: 300ms;
-    // Messes with shadcn stuff
-    // &:hover {
-    //     color: theme("colors.primary.DEFAULT");
-    // }
+    &:hover {
+        color: $accent_color;
+    }
 }
 
-.primary-text {
-    color: theme("colors.primary.DEFAULT");
+.accent-text {
+    color: $accent_color;
 }
 
 .router-animation {
@@ -49,7 +48,7 @@ main {
 p {
     line-height: 1.5;
     a {
-        color: theme("colors.primary.DEFAULT");
+        color: $accent_color;
         text-decoration: underline;
     }
 }
@@ -59,7 +58,7 @@ p {
 }
 
 .section-title {
-    color: theme("colors.primary.DEFAULT");
+    color: $accent_color;
     font-size: 3rem;
     font-weight: bold;
 }
@@ -69,12 +68,12 @@ p {
     bottom: 0;
     left: 0;
     right: 0;
-    background: theme("colors.primary.DEFAULT");
-    color: theme("colors.primary.foreground");
+    background: $accent_color;
+    color: #FFF;
     font-weight: bold;
     padding: 10px;
     a:hover {
-        color: theme("colors.background");
+        color: #FFF;
         text-decoration: underline;
     }
 }
