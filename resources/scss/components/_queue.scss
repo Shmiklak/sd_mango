@@ -1,7 +1,7 @@
 .queue-form {
     max-width: 600px;
     margin: 30px auto;
-    background: #FFF;
+    background: theme("colors.background");
     border: 1px solid #CCC;
     padding: 30px;
     border-radius: 8px;
@@ -28,8 +28,8 @@ textarea.form-control {
 
 .queue-filter {
     margin: 30px auto;
-    background: #FFF;
-    border: 1px solid #CCC;
+    background: theme("colors.background");
+    border: 1px solid theme("colors.border");
     padding: 10px;
     border-radius: 8px;
 

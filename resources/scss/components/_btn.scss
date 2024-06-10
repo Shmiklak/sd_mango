@@ -9,22 +9,24 @@
     cursor: pointer;
 
     &-primary {
-        background: $accent_color;
-        color: #FFF;
+        background: theme("colors.primary.DEFAULT");
+        color: theme("colors.background");
         transition: 300ms;
         &:hover {
-            background: darken($accent_color, 5%);
-            color: #FFF;
+            background: theme("colors.primary.DEFAULT/80");
+            // background: darken($accent_color, 5%);
+            color: theme("colors.background");
         }
     }
 
     &-default {
-        background: $text_color;
-        color: #FFF;
+        background: theme("colors.foreground");
+        color: theme("colors.background");
         transition: 300ms;
         &:hover {
-            background: darken($text_color, 5%);
-            color: #FFF;
+            background: theme("colors.primary.DEFAULT/80");
+            // background: darken($text_color, 5%);
+            color: theme("colors.foreground");
         }
     }
 }
