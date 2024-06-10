@@ -10,7 +10,7 @@ const Queue = ({ auth, beatmaps, title }) => {
 
     const { data, setData, get, processing, errors, reset } = useForm({
         map_style: params.get('map_style') === null ? 'all' : params.get('map_style'),
-        status: params.get('status') === null ? 'all' : params.get('status'),
+        status: params.get('status') === null ? 'default' : params.get('status'),
     });
 
     const submit = (e) => {
