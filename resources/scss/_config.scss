@@ -1,87 +1,11 @@
 $bg_color: #f6f6f6;
-$accent_color: #ea564b;
+$accent_color: #EA564B;
 $text_color: #253539;
-$secondary_color: #10d4e6;
+$secondary_color: #10D4E6;
 $bs-pagination-active-border-color: $accent_color;
 
 #app .pagination {
-    --bs-pagination-active-bg: #ea564b;
-    --bs-pagination-color: #ea564b;
-    --bs-pagination-active-border-color: #ea564b;
-}
-
-@layer base {
-    :root {
-        --background: 0 0% 96%;
-        --foreground: 192 21% 18%;
-
-        --card: 0 0% 96%;
-        --card-foreground: 192 21% 18%;
-
-        --popover: 0 0% 96%;
-        --popover-foreground: 192 21% 18%;
-
-        --primary: 4 79% 61%;
-        --primary-foreground: var(--background);
-
-        --secondary: 185 87% 48%;
-        --secondary-foreground: 220.9 39.3% 11%;
-
-        --muted: 220 14.3% 95.9%;
-        --muted-foreground: 220 8.9% 46.1%;
-
-        --accent: 220.9 39.3% 11%;
-        --accent-foreground: var(--background);
-
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 210 20% 98%;
-
-        --caution: 46 100% 90%;
-        --caution-foreground: 45 94% 21%;
-
-        --border: 220 13% 91%;
-        --input: 220 13% 91%;
-        --ring: 192 21% 18%;
-
-        --radius: 0.5rem;
-    }
-    // Add dark theme later
-    // .dark {
-    //     --background: 224 71.4% 4.1%;
-    //     --foreground: 210 20% 98%;
-
-    //     --card: 224 71.4% 4.1%;
-    //     --card-foreground: 210 20% 98%;
-
-    //     --popover: 224 71.4% 4.1%;
-    //     --popover-foreground: 210 20% 98%;
-
-    //     --primary: 210 20% 98%;
-    //     --primary-foreground: 220.9 39.3% 11%;
-
-    //     --secondary: 215 27.9% 16.9%;
-    //     --secondary-foreground: 210 20% 98%;
-
-    //     --muted: 215 27.9% 16.9%;
-    //     --muted-foreground: 217.9 10.6% 64.9%;
-
-    //     --accent: 215 27.9% 16.9%;
-    //     --accent-foreground: 210 20% 98%;
-
-    //     --destructive: 0 62.8% 30.6%;
-    //     --destructive-foreground: 210 20% 98%;
-
-    //     --border: 215 27.9% 16.9%;
-    //     --input: 215 27.9% 16.9%;
-    //     --ring: 216 12.2% 83.9%;
-    // }
-}
-
-@layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply bg-background text-foreground;
-    }
+    --bs-pagination-active-bg: #EA564B;
+    --bs-pagination-color: #EA564B;
+    --bs-pagination-active-border-color: #EA564B;
 }

@@ -1,17 +1,18 @@
-import { useForm } from "@inertiajs/react";
+import {useForm} from "@inertiajs/react";
 import Errors from "@/Components/Errors.jsx";
-import { Button } from "@/Components/ui/button";
+
 export const NominatorResponseForm = (props) => {
+
     const { data, setData, post, processing, errors, reset } = useForm({
         request_id: props.request_id,
-        comment: "",
-        status: "UNINTERESTED",
+        comment: '',
+        status: 'UNINTERESTED'
     });
 
     const submit = (e) => {
         e.preventDefault();
-        post("/update-response");
-    };
+        post('/update-response');
+    }
 
     return (
         <>
@@ -22,36 +23,29 @@ export const NominatorResponseForm = (props) => {
             {/*    In case you are not interested in the map, just skip it. "INVALID" marker should only be used when the*/}
             {/*    beatmap has critical quality issues or does not satisfy the queue rules.*/}
             {/*</p>*/}
-            <Errors errors={errors} />
+            <Errors errors={errors}/>
             <form onSubmit={submit}>
-                <label>Status:</label>
-                <select
-                    className="form-control"
-                    name="status"
-                    id="status"
-                    value={data.status}
-                    onChange={(e) => setData("status", e.target.value)}
-                >
+                <label>
+                    Status:
+                </label>
+                <select className="form-control" name="status" id="status" value={data.status} onChange={(e) => setData('status', e.target.value)}>
                     <option value="UNINTERESTED">Not interested</option>
                     <option value="ACCEPTED">Accepted</option>
                     <option value="MODDED">Modded</option>
                     <option value="RECHECKED">Rechecked</option>
                     <option value="NOMINATED">Nominated</option>
                     <option value="INVALID">Invalid</option>
-                    <option value="REMOVE_MY_RESPONSE">
-                        Remove my response
-                    </option>
+                    <option value="REMOVE_MY_RESPONSE">Remove my response</option>
                 </select>
-                <label>Additional comments:</label>
-                <textarea
-                    className="form-control"
-                    name="comment"
-                    id="comment"
-                    value={data.comment}
-                    onChange={(e) => setData("comment", e.target.value)}
+                <label>
+                    Additional comments:
+                </label>
+                <textarea className="form-control" name="comment" id="comment"
+                          value={data.comment}
+                          onChange={(e) => setData('comment', e.target.value)}
                 />
-                <Button type="submit">Submit</Button>
+                <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </>
-    );
-};
+    )
+}

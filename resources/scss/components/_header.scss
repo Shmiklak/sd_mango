@@ -1,5 +1,5 @@
 .page-header {
-    background: theme("colors.background");
+    background: #FFF;
     padding: 15px 0;
     box-shadow: 0 0 20px rgb(0 0 0 / 25%);
     &-nav {
@@ -24,7 +24,7 @@
                 text-align: right;
                 line-height: 1.5;
                 a {
-                    color: theme("colors.primary.DEFAULT");
+                    color: $accent_color;
                 }
                 img {
                     width: 80px;
@@ -59,7 +59,7 @@
         &__link {
             font-weight: bold;
             &.active {
-                color: theme("colors.primary.DEFAULT");
+                color: $accent_color;
             }
         }
     }
@@ -91,7 +91,7 @@
         bottom: 0;
         left: 0;
         flex-direction: column;
-        background: theme("colors.background");
+        background: #FFF;
         align-items: flex-start;
         width: 300px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
