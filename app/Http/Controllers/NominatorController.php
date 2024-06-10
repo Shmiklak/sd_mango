@@ -67,6 +67,7 @@ class NominatorController extends Controller
         if (auth()->user()) {
             $query = Beatmap::query()->whereHas('responses', function($q) {
                 $q->where('nominator_id', auth()->user()->id);
+                $q->whereNotIn('status', ['INVALID', 'UNINTERESTED']);
             });
 
             if ($request->has('map_style') && $request->get('map_style') !== 'all') {
