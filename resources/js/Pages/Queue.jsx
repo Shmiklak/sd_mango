@@ -103,7 +103,7 @@ const Queue = ({ auth, beatmaps, title }) => {
                         </form>
                     </div>
 
-                    <div className="row justify-content-center">
+                    <div className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(350px,1fr))] justify-center">
                         {beatmaps.data.map((beatmap) => (
                             <Beatmap
                                 key={beatmap.id}

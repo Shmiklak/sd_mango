@@ -7,7 +7,7 @@ export const Beatmap = (props) => {
     const [cover, setCover] = useState(props.beatmap.cover);
 
     return (
-        <div className="col-lg-4 col-md-6 col-12 mb-3">
+        <div className="grid">
             <div className="beatmap">
                 <div className="beatmap-cover">
                     <a
