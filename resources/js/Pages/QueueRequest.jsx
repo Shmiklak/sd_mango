@@ -99,7 +99,7 @@ const QueueRequest = ({ auth, beatmap }) => {
                                     </a>
                                 </Button>
                                 <Button
-                                    variant="secondary"
+                                    variant="text"
                                     asChild
                                     className="mb-5 mx-2"
                                 >
