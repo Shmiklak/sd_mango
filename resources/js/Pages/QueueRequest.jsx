@@ -63,8 +63,10 @@ const QueueRequest = ({auth, beatmap}) => {
                                 </div>
                             </div>
                             <a href={`https://osu.ppy.sh/beatmapsets/${beatmap.beatmapset_id}`} target="_blank"
-                               className="btn btn-primary mb-5">Open on osu! website</a>
-                            <Link href={route('queue')} className="btn btn-default mb-5 mx-2">Back to queue</Link>
+                               className="btn btn-primary mb-5 mx-1">Beatmap page</a>
+                            <a href={`osu://s/${beatmap.beatmapset_id}`}
+                               className="btn btn-secondary mb-5 mx-1">osu!direct</a>
+                            <Link href={route('queue')} className="btn btn-default mb-5 mx-1">Back to queue</Link>
                         </div>
                         <div className="col-lg-6">
                             <div className="queue-request-nominators-info mb-5">
@@ -74,10 +76,16 @@ const QueueRequest = ({auth, beatmap}) => {
                                         later.</p>) :
                                     beatmap.responses.map((response, index) => (
                                         <div className="nominator-response mb-3">
-                                            <p>
-                                                <strong>{response.nominator.username}</strong> has marked this beatmap
-                                                as <span className="accent-text">{response.status}</span>
-                                            </p>
+                                            <div className="nominator-response-wrapper">
+                                                <img src={"https://a.ppy.sh/" + response.nominator.osu_id}
+                                                     className="nominator-response-icon"
+                                                     alt={response.nominator.username}/>
+                                                <p>
+                                                    <strong>{response.nominator.username}</strong> has marked this
+                                                    beatmap
+                                                    as <span className="accent-text">{response.status}</span>
+                                                </p>
+                                            </div>
 
                                             {response.comment !== null ? (
                                                 <p className="mapper-comment">

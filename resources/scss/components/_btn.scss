@@ -18,6 +18,16 @@
         }
     }
 
+    &-secondary {
+        background: $secondary_color;
+        color: #FFF;
+        transition: 300ms;
+        &:hover {
+            background: darken($secondary_color, 5%);
+            color: #FFF;
+        }
+    }
+
     &-default {
         background: $text_color;
         color: #FFF;
