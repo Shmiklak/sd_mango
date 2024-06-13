@@ -1,8 +1,8 @@
 .queue-form {
     max-width: 600px;
     margin: 30px auto;
-    background: #FFF;
-    border: 1px solid #CCC;
+    background: theme("colors.card.DEFAULT");
+    border: 1px solid #ccc;
     padding: 30px;
     border-radius: 8px;
 }
@@ -15,7 +15,7 @@ label {
 .form-control {
     width: 100%;
     display: block;
-    border: 1px solid #CCC;
+    border: 1px solid #ccc;
     border-radius: 8px;
     padding: 10px;
     margin-bottom: 20px;

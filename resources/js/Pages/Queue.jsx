@@ -25,7 +25,7 @@ const Queue = ({ auth, beatmaps, title }) => {
             <Head title={title}/>
             { auth.user === null ? (<LoginRequired/>) : (<>
                 <div className="text-center">
-                    <h1 className="section-title text-center">{title}</h1>
+                    <h1 className="section-title mb-3 text-center">{title}</h1>
                 </div>
 
                 <div className="alert alert-warning">
@@ -74,7 +74,7 @@ const Queue = ({ auth, beatmaps, title }) => {
                     </form>
                 </div>
 
-                <div className="row justify-content-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {beatmaps.data.map((beatmap) => (
                         <Beatmap key={beatmap.id} beatmap={beatmap} auth={auth}/>
                     ))}

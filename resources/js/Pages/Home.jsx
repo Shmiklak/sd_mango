@@ -8,7 +8,7 @@ const Home = () => {
             <div className="home-page">
                 <div className="home-page-section text-center">
                     <img src="/static/assets/images/banner2.png" className="w-100"/>
-                    <h1>Welcome to #sd_mango queue!</h1>
+                    <h1 className="home-page-title">Welcome to #sd_mango queue!</h1>
                     <p>
                         #sd_mango is a team of <a href="https://osu.ppy.sh/groups/28" target="_blank">Beatmap
                         Nominators</a> united to promote the beatmaps <strong>YOU</strong> like.

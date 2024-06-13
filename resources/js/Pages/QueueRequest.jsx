@@ -14,7 +14,7 @@ const QueueRequest = ({auth, beatmap}) => {
                 <div className="mt-5 queue-request">
                     <div className="row">
                         <div className="col-12">
-                            <h1 className="section-title text-center">{beatmap.artist} - {beatmap.title}</h1>
+                            <h1 className="section-title mb-3 text-center">{beatmap.artist} - {beatmap.title}</h1>
                         </div>
                         <div className="col-lg-6">
                             <div className="queue-request-beatmap mb-3">
@@ -94,7 +94,7 @@ const QueueRequest = ({auth, beatmap}) => {
                     </div>
                 </div>
             </>)}
-        < />
+        </>
     )
 }
 
