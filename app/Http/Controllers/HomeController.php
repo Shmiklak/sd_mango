@@ -39,16 +39,22 @@ class HomeController extends Controller
 
         $query = Beatmap::query();
 
-        if ($request->has('map_style') && $request->get('map_style') !== 'all') {
-            $query = $query->where('map_style', $request->get('map_style'));
-        }
-        if ($request->has('status') && $request->get('status') !== 'default') {
-            $query = $query->where('status', $request->get('status'));
+        if (auth()->user()) {
+            if ($request->has('map_style') && $request->get('map_style') !== 'all') {
+                $query = $query->where('map_style', $request->get('map_style'));
+            }
+            if ($request->has('status') && $request->get('status') !== 'default') {
+                $query = $query->where('status', $request->get('status'));
+            } else {
+                $query = $query->whereNotIn('status', ['INVALID', 'HIDDEN'])->whereDoesntHave('responses', function($q) {
+                    $q->where('nominator_id', auth()->user()->id)->where('status', 'UNINTERESTED');
+                });
+            }
+            $beatmaps = $query->orderBy('id', 'desc')->paginate(12)->withQueryString();
         } else {
-            $query = $query->whereNotIn('status', ['INVALID', 'HIDDEN']);
+            $beatmaps = [];
         }
 
-        $beatmaps = $query->orderBy('id', 'desc')->paginate(12)->withQueryString();;
         return Inertia::render('Queue', ['beatmaps' => $beatmaps, 'title' => 'Queue']);
     }
 
