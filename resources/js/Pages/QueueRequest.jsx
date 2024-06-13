@@ -14,7 +14,7 @@ const QueueRequest = ({auth, beatmap}) => {
                 <div className="mt-5 queue-request">
                     <div className="row">
                         <div className="col-12">
-                            <h1 className="section-title text-center">{beatmap.artist} - {beatmap.title}</h1>
+                            <h1 className="section-title mb-3 text-center">{beatmap.artist} - {beatmap.title}</h1>
                         </div>
                         <div className="col-lg-6">
                             <div className="queue-request-beatmap mb-3">
@@ -25,55 +25,6 @@ const QueueRequest = ({auth, beatmap}) => {
                                          className="beatmap-image"/>
                                     <BeatmapStatus beatmap={beatmap}/>
                                 </div>
-                                <Button asChild className="mb-5">
-                                    <a
-                                        href={`https://osu.ppy.sh/beatmapsets/${beatmap.beatmapset_id}`}
-                                        target="_blank"
-                                    >
-                                        Open on osu! website
-                                    </a>
-                                </Button>
-                                <Button
-                                    variant="text"
-                                    asChild
-                                    className="mb-5 mx-2"
-                                >
-                                    <Link
-                                        href={route("queue")}
-                                        // Fix color later
-                                        // className="btn btn-default "
-                                    >
-                                        Back to queue
-                                    </Link>
-                                </Button>
-                            </div>
-                            <div className="col-lg-6">
-                                <div className="queue-request-nominators-info mb-5">
-                                    <h2 className="mb-4">Responses</h2>
-                                    {beatmap.responses.length === 0 ? (
-                                        <p>
-                                            There are no responses available for
-                                            this beatmap. Please check back
-                                            later.
-                                        </p>
-                                    ) : (
-                                        beatmap.responses.map(
-                                            (response, index) => (
-                                                <div className="nominator-response mb-3">
-                                                    <p>
-                                                        <strong>
-                                                            {
-                                                                response
-                                                                    .nominator
-                                                                    .username
-                                                            }
-                                                        </strong>{" "}
-                                                        has marked this beatmap
-                                                        as{" "}
-                                                        <span className="accent-text">
-                                                            {response.status}
-                                                        </span>
-                                                    </p>
 
                                 <div className="beatmap-text">
                                     <div className="text-center mb-3">
@@ -143,7 +94,7 @@ const QueueRequest = ({auth, beatmap}) => {
                     </div>
                 </div>
             </>)}
-        < />
+        </>
     )
 }
 

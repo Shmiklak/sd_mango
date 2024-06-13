@@ -7,7 +7,6 @@ export const Beatmap = ( props ) => {
     const [cover, setCover] = useState(props.beatmap.cover);
 
     return (
-        <div className="grid">
             <div className="beatmap">
                 <div className="beatmap-cover">
                     <a href={`https://osu.ppy.sh/beatmapsets/${props.beatmap.beatmapset_id}`} target="_blank">
@@ -58,7 +57,6 @@ export const Beatmap = ( props ) => {
                         <strong>Mapper comment: </strong> {props.beatmap.comment}
                     </p>
                 </div>
-            </div>
-        </div>
+    </div>
     )
 }
