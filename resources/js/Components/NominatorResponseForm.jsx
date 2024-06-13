@@ -5,7 +5,7 @@ export const NominatorResponseForm = (props) => {
 
     const { data, setData, post, processing, errors, reset } = useForm({
         request_id: props.request_id,
-        nominator_id: props.auth.id,
+        nominator_id: props.auth.user.id,
         comment: '',
         status: 'UNINTERESTED'
     });
