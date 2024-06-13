@@ -5,7 +5,7 @@ import {BeatmapStatus} from "@/Components/BeatmapStatus.jsx";
 import {useState} from "react";
 import LoginRequired from "@/Components/LoginRequired.jsx";
 
-const QueueRequest = ({auth, beatmap}) => {
+const QueueRequest = ({auth, beatmap, nominators}) => {
     const [cover, setCover] = useState(beatmap.cover);
     return (
         <>
@@ -95,7 +95,7 @@ const QueueRequest = ({auth, beatmap}) => {
                                         </div>
                                     ))}
                                 {auth.user.elevated_access ? (
-                                    <NominatorResponseForm auth={auth} responses={beatmap.responses}
+                                    <NominatorResponseForm nominators={nominators} auth={auth} responses={beatmap.responses}
                                                            request_id={beatmap.id}/>) : (<></>)}
                             </div>
                         </div>

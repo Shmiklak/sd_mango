@@ -5,6 +5,7 @@ export const NominatorResponseForm = (props) => {
 
     const { data, setData, post, processing, errors, reset } = useForm({
         request_id: props.request_id,
+        nominator_id: props.auth.id,
         comment: '',
         status: 'UNINTERESTED'
     });
@@ -25,25 +26,44 @@ export const NominatorResponseForm = (props) => {
             {/*</p>*/}
             <Errors errors={errors}/>
             <form onSubmit={submit}>
-                <label>
-                    Status:
-                </label>
-                <select className="form-control" name="status" id="status" value={data.status} onChange={(e) => setData('status', e.target.value)}>
-                    <option value="UNINTERESTED">Not interested</option>
-                    <option value="ACCEPTED">Accepted</option>
-                    <option value="MODDED">Modded</option>
-                    <option value="RECHECKED">Rechecked</option>
-                    <option value="NOMINATED">Nominated</option>
-                    <option value="INVALID">Invalid</option>
-                    <option value="REMOVE_MY_RESPONSE">Remove my response</option>
-                </select>
-                <label>
-                    Additional comments:
-                </label>
-                <textarea className="form-control" name="comment" id="comment"
-                          value={data.comment}
-                          onChange={(e) => setData('comment', e.target.value)}
-                />
+                <div className="form-group">
+                    <label>
+                        Status:
+                    </label>
+                    <select className="form-control" name="status" id="status" value={data.status}
+                            onChange={(e) => setData('status', e.target.value)}>
+                        <option value="UNINTERESTED">Not interested</option>
+                        <option value="ACCEPTED">Accepted</option>
+                        <option value="MODDED">Modded</option>
+                        <option value="RECHECKED">Rechecked</option>
+                        <option value="NOMINATED">Nominated</option>
+                        <option value="INVALID">Invalid</option>
+                        <option value="REMOVE_MY_RESPONSE">Remove my response</option>
+                    </select>
+                </div>
+
+                {props.auth.user.admin_access ? (<div className="form-group">
+                    <label>
+                        Nominator:
+                    </label>
+                    <select className="form-control" name="status" id="status" value={data.nominator_id}
+                            onChange={(e) => setData('nominator_id', e.target.value)}>
+                        {props.nominators.map((nominator) => (
+                            <option value={nominator.id}>{nominator.username}</option>
+                        ))}
+                    </select>
+                </div>) : (<></>)}
+
+                <div className="form-group">
+                    <label>
+                        Additional comments:
+                    </label>
+                    <textarea className="form-control" name="comment" id="comment"
+                              value={data.comment}
+                              onChange={(e) => setData('comment', e.target.value)}
+                    />
+                </div>
+
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
         </>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Beatmap;
 use App\Models\Member;
+use App\Models\User;
 use App\Services\OsuApi;
 use Carbon\Carbon;
 use GuzzleHttp\Exception\ClientException;
@@ -145,6 +146,7 @@ class HomeController extends Controller
 
     public function queue_request($id) {
         $beatmap = Beatmap::with('responses')->with('responses.nominator')->with('author')->findOrFail($id);
-        return Inertia::render('QueueRequest', ['beatmap' => $beatmap]);
+        $nominators = User::where('elevated_access', 1)->get(['id', 'username']);
+        return Inertia::render('QueueRequest', ['beatmap' => $beatmap, 'nominators' => $nominators]);
     }
 }

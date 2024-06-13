@@ -15,11 +15,12 @@ class NominatorController extends Controller
     public function update_response(Request $request) {
         $this->validate($request, [
            'request_id' => 'required',
+           'nominator_id' => 'required',
            'comment' => 'sometimes',
            'status' => 'required'
         ]);
 
-        $nominator_id = auth()->user()->id;
+        $nominator_id = $request->get('nominator_id');
 
         $response = NominatorResponse::where('nominator_id', $nominator_id)->where('request_id', $request->get('request_id'))->first();
 
