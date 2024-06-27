@@ -9,15 +9,17 @@ class IRCServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton(IRCService::class, function ($app) {
-            $config = $app['config']['irc'];
-            return new IRCService(
-                $config['server'],
-                $config['port'],
-                $config['nickname'],
-                $config['password']
-            );
-        });
+        if (!env('APP_DEBUG')) {
+            $this->app->singleton(IRCService::class, function ($app) {
+                $config = $app['config']['irc'];
+                return new IRCService(
+                    $config['server'],
+                    $config['port'],
+                    $config['nickname'],
+                    $config['password']
+                );
+            });
+        }
     }
 
     public function boot()
