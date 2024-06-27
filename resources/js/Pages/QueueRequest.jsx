@@ -1,4 +1,4 @@
-import {Head, Link} from "@inertiajs/react";
+import {Head} from "@inertiajs/react";
 import App from "@/Layouts/App.jsx";
 import {NominatorResponseForm} from "@/Components/NominatorResponseForm.jsx";
 import {BeatmapStatus} from "@/Components/BeatmapStatus.jsx";
@@ -7,6 +7,12 @@ import LoginRequired from "@/Components/LoginRequired.jsx";
 
 const QueueRequest = ({auth, beatmap, nominators}) => {
     const [cover, setCover] = useState(beatmap.cover);
+
+    const back = (e) => {
+        e.preventDefault();
+        window.history.back();
+    }
+
     return (
         <>
             <Head title={`${beatmap.artist} - ${beatmap.title}`}/>
@@ -66,7 +72,7 @@ const QueueRequest = ({auth, beatmap, nominators}) => {
                                className="btn btn-primary mb-5 mx-1">Beatmap page</a>
                             <a href={`osu://s/${beatmap.beatmapset_id}`}
                                className="btn btn-secondary mb-5 mx-1">osu!direct</a>
-                            <Link href={route('queue')} className="btn btn-default mb-5 mx-1">Back to queue</Link>
+                            <a href="#" onClick={(e) => back(e)} className="btn btn-default mb-5 mx-1">Back to queue</a>
                         </div>
                         <div className="col-lg-6">
                             <div className="queue-request-nominators-info mb-5">
