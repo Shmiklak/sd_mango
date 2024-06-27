@@ -12,6 +12,11 @@ export const NominatorResponseForm = (props) => {
 
     const submit = (e) => {
         e.preventDefault();
+        if (data.status === 'ACCEPTED') {
+            if (!confirm("Are you sure you want to accept this beatmap? This action will automatically let mapper know about your decision.")) {
+                return false;
+            }
+        }
         post('/update-response');
     }
 
