@@ -1,7 +1,7 @@
 export const PageFooter = () => {
     return (
         <footer className="page-footer">
-            The website was developed by <a href="https://osu.ppy.sh/users/5504231" target="_blank">Shmiklak</a>
+            <h3>Useful links</h3>
 
             <ul className="d-flex mt-3 footer-links">
                 <li>
@@ -17,6 +17,11 @@ export const PageFooter = () => {
                 <li>
                     <a href="https://discord.gg/2D9aNeTuRh" target="_blank">
                         <img src="/static/assets/images/icons/discord.svg"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://osu.ppy.sh/community/forums/topics/1930013" target="_blank">
+                        <img src="/static/assets/images/icons/osu.svg"/>
                     </a>
                 </li>
             </ul>

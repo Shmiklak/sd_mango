@@ -23,6 +23,11 @@
                 transition: 300ms;
                 opacity: 1;
 
+                img {
+                    width: 40px;
+                    height: 40px;
+                }
+
                 &:hover {
                     opacity: 0.6;
                 }
