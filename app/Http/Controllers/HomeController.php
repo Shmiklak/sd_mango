@@ -106,13 +106,13 @@ class HomeController extends Controller
             ]);
         }
 
-        $request_timer = Carbon::now()->subHours(24);
+        $request_timer = Carbon::now()->subMonth();
 
         $previous_request = Beatmap::where('request_author', auth()->user()->id)->where('created_at', '>=', $request_timer)->first();
 
         if ($previous_request !== null) {
             throw ValidationException::withMessages([
-                'beatmap_link' => 'You cannot submit more than one beatmap per day. Please try again later.'
+                'beatmap_link' => 'You cannot submit more than one beatmap per month. Please try again later.'
             ]);
         }
 

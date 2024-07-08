@@ -33,8 +33,15 @@ Route::middleware('elevated_access')->group(function () {
 
 Route::middleware('admin')->group(function () {
    Route::get('/edit-team', [AdminController::class, 'edit_team'])->name('edit_team');
+   Route::get('/update-maps', function() {
+      $reqs = \App\Models\Beatmap::where('status', 'PENDING')->get();
+      foreach ($reqs as $req) {
+          $req->updateStatus();
+      }
+   });
 });
 
 Route::get('osu_auth', [OsuAuthController::class, 'redirectToProvider'])->name('osu_login');
 Route::get('osu_login', [OsuAuthController::class, 'handleProviderCallback']);
 Route::get('logout', [OsuAuthController::class, 'handleLogout'])->name('logout');
+

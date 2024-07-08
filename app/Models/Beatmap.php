@@ -43,7 +43,7 @@ class Beatmap extends Model
             $this->status = 'ACCEPTED';
         } else if ($invalid_responses >= 2) {
             $this->status = 'INVALID';
-        } else if ($uninterested_responses >= 8) {
+        } else if ($uninterested_responses >= 3) {
             $this->status = 'HIDDEN';
         } else {
             $this->status = 'PENDING';
