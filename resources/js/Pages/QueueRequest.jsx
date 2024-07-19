@@ -1,4 +1,4 @@
-import {Head} from "@inertiajs/react";
+import {Head, useForm} from "@inertiajs/react";
 import App from "@/Layouts/App.jsx";
 import {NominatorResponseForm} from "@/Components/NominatorResponseForm.jsx";
 import {BeatmapStatus} from "@/Components/BeatmapStatus.jsx";
@@ -7,6 +7,16 @@ import LoginRequired from "@/Components/LoginRequired.jsx";
 
 const QueueRequest = ({auth, beatmap, nominators}) => {
     const [cover, setCover] = useState(beatmap.cover);
+
+    const { data, setData, post, processing, errors, reset } = useForm({
+        request_id: beatmap.id,
+        comments: beatmap.comment
+    });
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        post('/update-request');
+    }
 
     const back = (e) => {
         e.preventDefault();
@@ -75,7 +85,7 @@ const QueueRequest = ({auth, beatmap, nominators}) => {
                             <a href="#" onClick={(e) => back(e)} className="btn btn-default mb-5 mx-1">Back to queue</a>
                         </div>
                         <div className="col-lg-6">
-                            <div className="queue-request-nominators-info mb-5">
+                            <div className="queue-request-nominators-info mb-2">
                                 <h2 className="mb-4">Responses</h2>
                                 {beatmap.responses.length === 0 ?
                                     (<p>There are no responses available for this beatmap. Please check back
@@ -104,6 +114,24 @@ const QueueRequest = ({auth, beatmap, nominators}) => {
                                     <NominatorResponseForm nominators={nominators} auth={auth} responses={beatmap.responses}
                                                            request_id={beatmap.id}/>) : (<></>)}
                             </div>
+                            { auth.user.id === beatmap.request_author ? (<div className="queue-request-nominators-info mb-2">
+                                <h2 className="mb-4">Edit my request</h2>
+
+                                <form onSubmit={onSubmit}>
+                                    <div className="form-group">
+                                        <label>
+                                            Comments:
+                                        </label>
+                                        <textarea className="form-control" name="comment" id="comment"
+                                                  value={data.comments}
+                                                  onChange={(e) => setData('comments', e.target.value)}
+                                        />
+                                    </div>
+
+                                    <button type="submit" className="btn btn-primary mr-2">Submit</button>
+
+                                </form>
+                            </div>) : (<></>)}
                         </div>
                     </div>
                 </div>

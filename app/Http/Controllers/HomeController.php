@@ -153,6 +153,32 @@ class HomeController extends Controller
         return redirect()->route('queue')->with(['success' => true]);
     }
 
+    public function update_request(Request $request) {
+        $this->validate($request, [
+            'request_id' => 'required',
+            'comments' => 'sometimes'
+        ]);
+
+        if (auth()->user()->isRestricted()) {
+            throw ValidationException::withMessages([
+                'beatmap_link' => 'Your profile has been banned from using this website.'
+            ]);
+        }
+
+        $beatmap = Beatmap::find($request->get('request_id'));
+
+        if (auth()->user()->id !== $beatmap->request_author) {
+            throw ValidationException::withMessages([
+                'beatmap_link' => 'You can only edit your own requests.'
+            ]);
+        }
+
+        $beatmap->comment = $request->get('comments');
+        $beatmap->save();
+
+        return redirect()->back();
+    }
+
     public function queue_request($id) {
         $beatmap = Beatmap::with('responses')->with('responses.nominator')->with('author')->findOrFail($id);
         $nominators = User::where('elevated_access', 1)->get(['id', 'username']);
