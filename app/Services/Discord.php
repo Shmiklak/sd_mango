@@ -25,4 +25,19 @@ class Discord {
             $webhook->send();
         }
     }
+
+    public static function sendRankedBeatmap($beatmap) {
+        if (!env('APP_DEBUG')) {
+            $messageFactory = new MessageFactory();
+            $embedMessage = $messageFactory->create('embed');
+            $embedMessage->setTitle($beatmap->artist . " - " . $beatmap->title . " (mapped by " . $beatmap->creator . ")");
+            $embedMessage->setDescription( "This beatmap was ranked by #sd_mango members");
+            $embedMessage->setUrl("https://osu.ppy.sh/beatmapsets/" . $beatmap->beatmapset_id);
+            $embedMessage->setColor(0xE610E5);
+            $embedMessage->setThumbnailUrl("https://assets.ppy.sh/beatmaps/" . $beatmap->beatmapset_id . "/covers/list.jpg");
+            $webhook = new DiscordWebhook($embedMessage);
+            $webhook->setWebhookUrl(env("DISCORD_WEBHOOK"));
+            $webhook->send();
+        }
+    }
 }

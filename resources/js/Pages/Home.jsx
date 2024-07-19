@@ -1,11 +1,13 @@
 import {Head, Link} from "@inertiajs/react";
 import App from "@/Layouts/App.jsx";
+import AutoplayCarousel from "@/Components/AutoplayCarousel.jsx";
 
-const Home = () => {
+const Home = (props) => {
     return (
         <>
             <Head title="Home"/>
             <div className="home-page">
+
                 <div className="home-page-section text-center">
                     <img src="/static/assets/images/banner2.png" className="w-100"/>
                     <h1 className="home-page-title">Welcome to #sd_mango queue!</h1>
@@ -14,6 +16,7 @@ const Home = () => {
                         Nominators</a> united to promote the beatmaps <strong>YOU</strong> like.
                     </p>
                 </div>
+                <AutoplayCarousel beatmaps={props.beatmaps}/>
                 <div className="d-flex justify-content-center">
                     <div className="col-lg-6">
                         <div className="home-page-section text-center">

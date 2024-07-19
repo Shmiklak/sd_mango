@@ -29,6 +29,7 @@ Route::get('/queue/request/{id}', [HomeController::class, 'queue_request'])->nam
 Route::middleware('elevated_access')->group(function () {
     Route::get('/my_responses', [NominatorController::class, 'my_responses'])->name('my_responses');
     Route::post('/update-response', [NominatorController::class, 'update_response'])->name('update_response');
+    Route::post('/rank-beatmap', [NominatorController::class, 'rank_beatmap'])->name('rank_beatmap');
 });
 
 Route::middleware('admin')->group(function () {

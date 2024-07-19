@@ -12,7 +12,7 @@ class Beatmap extends Model
 
     protected $fillable = [
         'request_author', 'comment', 'beatmapset_id',
-        'title', 'artist', 'creator', 'cover', 'genre', 'language', 'bpm', 'map_style'
+        'title', 'artist', 'creator', 'cover', 'genre', 'language', 'bpm', 'map_style', 'is_ranked'
     ];
 
     protected $appends = [

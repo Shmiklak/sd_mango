@@ -10,6 +10,14 @@ export const NominatorResponseForm = (props) => {
         status: 'UNINTERESTED'
     });
 
+    const rankBeatmap = (e) => {
+        e.preventDefault();
+        if (!confirm('Are you sure?')) {
+            return false;
+        }
+        post('/rank-beatmap');
+    }
+
     const submit = (e) => {
         e.preventDefault();
         if (data.status === 'ACCEPTED') {
@@ -69,7 +77,8 @@ export const NominatorResponseForm = (props) => {
                     />
                 </div>
 
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary mr-2">Submit</button>
+                <button type="button" className="btn btn-secondary" onClick={rankBeatmap}>Set as ranked</button>
             </form>
         </>
     )

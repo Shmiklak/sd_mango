@@ -1,0 +1,70 @@
+.carousel-container {
+    overflow: hidden;
+    position: relative;
+    height: 250px;
+    border-color: #4b5563;
+    width: 100%;
+}
+
+.carousel-card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background: #FFF;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #CCC;
+    width: 410px;
+    height: 100%;
+    h5 {
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    .beatmap-text {
+        padding: 0 10px;
+    }
+}
+
+.carousel-card img {
+    height: 140px;
+    width: 410px;
+}
+
+.carousel-track {
+    display: flex;
+    position: absolute;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    gap: 16px;
+    width: 200%;
+    height: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    position: absolute;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    gap: 16px;
+    width: 200%;
+    height: 100%;
+    animation: slide 20s linear infinite;
+    &:hover {
+        animation-play-state: paused;
+    }
+}
+
+@keyframes slide {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: -100%;
+    }
+}

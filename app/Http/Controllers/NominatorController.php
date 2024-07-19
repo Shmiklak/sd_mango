@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Beatmap;
 use App\Models\NominatorResponse;
 use App\Services\Discord;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Validation\ValidationException;
@@ -85,5 +86,20 @@ class NominatorController extends Controller
         }
 
         return Inertia::render('Queue', ['beatmaps' => $beatmaps, 'title' => 'My Responses']);
+    }
+
+    public function rank_beatmap(Request $request) {
+        $this->validate($request, [
+            'request_id' => 'required',
+        ]);
+
+        $beatmap = Beatmap::find($request->get('request_id'));
+
+        $beatmap->is_ranked = true;
+        $beatmap->ranked_at = Carbon::now();
+
+        $beatmap->save();
+        Discord::sendRankedBeatmap($beatmap);
+        return redirect()->back();
     }
 }

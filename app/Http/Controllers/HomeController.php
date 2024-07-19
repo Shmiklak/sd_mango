@@ -19,7 +19,10 @@ class HomeController extends Controller
      * @return \Inertia\Response
      */
     public function index() {
-        return Inertia::render('Home');
+        $beatmaps = Beatmap::where('is_ranked', true)->orderBy('ranked_at', 'DESC')->limit(10)->get();
+        return Inertia::render('Home', [
+            'beatmaps' => $beatmaps,
+        ]);
     }
 
     /**
@@ -37,7 +40,7 @@ class HomeController extends Controller
      */
     public function queue(Request $request) {
 
-        $query = Beatmap::query();
+        $query = Beatmap::query()->where('is_ranked', false);
 
         if (auth()->user()) {
             if ($request->has('map_style') && $request->get('map_style') !== 'all') {
