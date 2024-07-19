@@ -16,13 +16,6 @@ export default function AutoplayCarousel(props) {
                             ></CarouselItem>
                         );
                     })}
-                    {props.beatmaps.map((beatmap) => {
-                        return (
-                            <CarouselItem
-                                beatmap={beatmap}
-                            ></CarouselItem>
-                        );
-                    })}
                 </div>
             </div>
         </div>
