@@ -2,8 +2,13 @@ import { Head, Link, useForm } from "@inertiajs/react";
 import App from "@/Layouts/App.jsx";
 import LoginRequired from "@/Components/LoginRequired.jsx";
 import { Beatmap, Beatmaps } from "@/Components/Beatmap.jsx";
+import { usePreview } from "@/Util/stores";
+import { useEffect, useRef } from "react";
 
 const Queue = ({ auth, beatmaps, title }) => {
+    const { preview, updatePreview } = usePreview();
+    const audioRef = useRef(null);
+
     let params = new URLSearchParams(window.location.search);
     let query_url = window.location.pathname;
 
@@ -20,6 +25,13 @@ const Queue = ({ auth, beatmaps, title }) => {
             preserveState: true,
         });
     };
+
+    useEffect(() => {
+        if (preview !== "") {
+            audioRef.current.volume = 0.3;
+            audioRef.current.play();
+        }
+    }, [preview]);
 
     return (
         <>
@@ -133,6 +145,10 @@ const Queue = ({ auth, beatmaps, title }) => {
                             ))}
                         </ul>
                     </nav>
+
+                    <audio ref={audioRef} src={preview} onEnded={() => {
+                        updatePreview("")
+                    }}/>
                 </>
             )}
         </>

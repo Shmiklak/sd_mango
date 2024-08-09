@@ -1,6 +1,6 @@
 import { Link } from "@inertiajs/react";
 import { BeatmapStatus } from "@/Components/BeatmapStatus.jsx";
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import { usePreview } from "@/Util/stores";
 import { Button } from "@/Components/ui/button";
 import { Play, Pause } from "lucide-react";
@@ -90,22 +90,11 @@ export const Beatmap = (props) => {
 };
 
 export const Beatmaps = (props) => {
-    const { preview } = usePreview((state) => state);
-    const audioRef = useRef(null);
-
-    useEffect(() => {
-        if (preview !== "") {
-            audioRef.current.volume = 0.3;
-            audioRef.current.play();
-        }
-    }, [preview]);
-
     return (
         <>
             {props.beatmaps.data.map((beatmap) => (
                 <Beatmap key={beatmap.id} beatmap={beatmap} auth={props.auth} />
             ))}
-            <audio ref={audioRef} src={preview} />
         </>
     );
 };
