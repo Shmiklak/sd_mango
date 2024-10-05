@@ -33,7 +33,8 @@ return new class extends Migration
             $table->enum('map_style', [
                'Jumps',
                'Streams',
-               'Difficult mechanics'
+               'Difficult mechanics',
+                'Both'
             ]);
             $table->timestamps();
         });

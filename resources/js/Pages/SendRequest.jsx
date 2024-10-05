@@ -50,7 +50,7 @@ const SendRequest = ({ auth }) => {
                             onChange={(e) => setData('map_style', e.target.value)}>
                         <option value="Jumps">Jumps</option>
                         <option value="Streams">Streams</option>
-                        <option value="Difficult mechanics">Difficult mechanics</option>
+                        <option value="Both">Both</option>
                     </select>
 
                     <label>

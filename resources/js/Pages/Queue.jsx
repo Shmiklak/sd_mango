@@ -87,8 +87,8 @@ const Queue = ({ auth, beatmaps, title }) => {
                                         <option value="all">All</option>
                                         <option value="Jumps">Jumps</option>
                                         <option value="Streams">Streams</option>
-                                        <option value="Difficult mechanics">
-                                            Difficult mechanics
+                                        <option value="Both">
+                                            Both
                                         </option>
                                     </select>
                                 </div>
