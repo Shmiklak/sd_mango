@@ -28,6 +28,9 @@ const SendRequest = ({ auth }) => {
                         pushing their limits, it should be fine to send here.
                     </p>
                     <p className="mb-3">
+                        <strong>NO TECH MAPS!!!</strong>
+                    </p>
+                    <p className="mb-3">
                         Even if your map is old or graveyarded and was rejected by every BN you asked before, still feel
                         free to
                         send it.
